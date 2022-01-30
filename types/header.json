@@ -1,0 +1,28 @@
+{
+  "Main": {
+    "links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "link",
+              "placeholder": "select a page or enter a URL",
+              "select": null
+            }
+          },
+          "link_text": {
+            "type": "Text",
+            "config": {
+              "label": "link text",
+              "placeholder": "my link"
+            }
+          }
+        },
+        "label": "links"
+      }
+    }
+  }
+}
