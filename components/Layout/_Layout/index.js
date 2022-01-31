@@ -6,22 +6,25 @@ import Meta from '../Meta'
 import { motion } from 'framer-motion'
 import headerShape from 'components/Layout/Header/shape'
 import metaShape from 'components/Layout/Meta/shape'
+import Intro from '../Intro'
+import ProjectList from 'components/Slices/ProjectList'
 
 const Layout = ({ metadata, header, preview, children }) => {
   return (
     <>
-      {/* TODO create defaults in Prismic singleton */}
       <Meta metadata={metadata} defaults={null} />
       {preview && <PreviewBar />}
-      <Header header={header} />
-      {/* TODO: customize your transition animation */}
-      <motion.div
-        initial={{ opacity: 1 }}
+      {/* <Header header={header} /> */}
+      <motion.sup
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}>
-        <main>{children}</main>
-      </motion.div>
-      <Footer />
+        <main>
+          <Intro />
+          <ProjectList />
+        </main>
+      </motion.sup>
+      {/* <Footer /> */}
     </>
   )
 }

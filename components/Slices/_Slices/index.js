@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import RichText from 'components/Slices/RichText'
-import Carousel from 'components/Slices/Carousel'
 
 const Slices = ({ slices }) => {
   return (
@@ -13,15 +12,11 @@ const Slices = ({ slices }) => {
             Component = <RichText richtext={slice.primary.richtext} />
             break
           }
-          case 'carousel': {
-            Component = <Carousel items={slice.items} />
-            break
-          }
           default:
             Component = <div>No slice found for {type}</div>
             break
         }
-        return <div key={i}>{Component}</div>
+        return <sup key={i}>{Component}</sup>
       })}
     </>
   )

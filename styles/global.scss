@@ -2,7 +2,13 @@
 @use 'mixins' as m;
 
 html {
+  background-color: v.$sunny;
   font-family: v.$font-primary;
+  font-weight: 300;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 *,
@@ -66,7 +72,7 @@ button {
 
 #nprogress {
   .bar {
-    background-color: v.$true-black;
+    background-color: v.$black;
     z-index: v.$z-1;
   }
 
@@ -75,8 +81,8 @@ button {
   }
 
   .spinner-icon {
-    border-left-color: v.$true-black;
-    border-top-color: v.$true-black;
+    border-left-color: v.$black;
+    border-top-color: v.$black;
   }
 }
 
@@ -92,4 +98,12 @@ img,
 svg {
   max-height: 100%;
   max-width: 100%;
+}
+
+// Reset sup elements to match div instead
+sup {
+  display: block;
+  font-size: 100%;
+  line-height: 1;
+  top: auto;
 }

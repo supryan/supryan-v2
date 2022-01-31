@@ -8,28 +8,24 @@ import * as analytics from 'lib/analytics'
 import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, router }) {
-
-  useEffect(()  => {
-
-    const handleRouteChangeStart = () => NProgress.start()
+  useEffect(() => {
+    const handleRouteChangeStart = () => {}
     const handleRouteChangeComplete = (url) => {
-      NProgress.done()
       // Artificial delay to ensure accurate page title data flows into analytics service
       setTimeout(() => analytics.pageview(url), 1000)
     }
-    const handleRouteChangeError = () => NProgress.done()
+    const handleRouteChangeError = () => {}
 
     router.events.on('routeChangeStart', handleRouteChangeStart)
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
-    router.events.on('routeChangeError', handleRouteChangeError)    
+    router.events.on('routeChangeError', handleRouteChangeError)
 
-    return () =>{
+    return () => {
       router.events.off('routeChangeStart', handleRouteChangeStart)
       router.events.off('routeChangeComplete', handleRouteChangeComplete)
       router.events.off('routeChangeError', handleRouteChangeError)
     }
-
-  }, [router]) 
+  }, [router])
 
   return (
     // to remove page transitions, remove AnimatePresence wrapper and motion.div in Layout component

@@ -5,13 +5,15 @@
 // the font mixin
 
 @use 'mixins' as m;
+@use 'variables' as v;
 
-@mixin title {
+@mixin shadow-text {
   @include m.font(
+    $font-family: v.$font-display,
     $font-size: (
-      sm: 20px,
-      md: 40px,
-      lg: 60px,
+      sm: 300px,
+      md: 300px,
+      lg: 300px,
     ),
     $line-height: (
       sm: 1,
@@ -24,4 +26,54 @@
       lg: normal,
     )
   );
+
+  color: v.$white;
+  transform: skewY(-5deg);
+  transform-origin: top left;
+}
+
+@mixin headline1 {
+  @include m.font(
+    $font-family: v.$font-headline,
+    $font-size: (
+      sm: 25px,
+      md: 30px,
+      lg: 40px,
+    ),
+    $line-height: (
+      sm: 1,
+      md: 1,
+      lg: 1,
+    ),
+    $letter-spacing: (
+      sm: normal,
+      md: normal,
+      lg: normal,
+    )
+  );
+
+  font-weight: 700;
+}
+
+@mixin body-lg {
+  @include m.font(
+    $font-family: v.$font-primary,
+    $font-size: (
+      sm: 18px,
+      md: 22px,
+      lg: 25px,
+    ),
+    $line-height: (
+      sm: 1.4,
+      md: 1.4,
+      lg: 1.4,
+    ),
+    $letter-spacing: (
+      sm: 0.75px,
+      md: 0.75px,
+      lg: 0.75px,
+    )
+  );
+
+  font-weight: 300;
 }

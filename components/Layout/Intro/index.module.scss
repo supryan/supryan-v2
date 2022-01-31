@@ -1,0 +1,77 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.intro {
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
+
+.background {
+  background-color: v.$sunny;
+  height: 100%;
+  left: 0;
+  min-height: 500px;
+  position: absolute;
+  top: 0;
+  transform: skewY(0deg) translateY(0) translateZ(0);
+  transform-origin: top left;
+  width: 100%;
+  z-index: 1;
+
+  &:nth-child(even) {
+    background-color: v.$white;
+    z-index: 3;
+  }
+}
+
+.container {
+  @include m.container;
+
+  position: relative;
+  z-index: 2;
+}
+
+.grid {
+  align-items: center;
+  grid-gap: 0 !important;
+}
+
+.sup {
+  grid-column: 1 / -1;
+  padding: v.$slice-pad-md;
+
+  @include m.breakpoint(v.$md) {
+    grid-column: 1 / span 6;
+    padding: 0;
+  }
+}
+
+.supText {
+  align-items: center;
+  display: flex;
+  position: relative;
+  z-index: 2;
+
+  @include m.breakpoint(v.$md) {
+    height: 45vh;
+    min-height: 500px;
+  }
+}
+
+.hero {
+  grid-column: 1 / -1;
+
+  @include m.breakpoint(v.$md) {
+    grid-column: 8 / span 5;
+  }
+}
+
+.heroTitle {
+  @include t.headline1;
+}
+
+.heroBody {
+  @include t.body-lg;
+}

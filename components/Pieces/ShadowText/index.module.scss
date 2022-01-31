@@ -1,0 +1,11 @@
+@use 'mixins' as m;
+@use 'variables' as v;
+@use 'typography' as t;
+
+.text {
+  @include t.shadow-text;
+}
+
+.character {
+  display: inline-block;
+}

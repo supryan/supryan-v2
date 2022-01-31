@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 // global grid.
 // please adjust the css properties to customize for your project.
-const Grid = ({ className, children, tag: Tag = 'div' }) => {
+const Grid = ({ className, children, tag: Tag = 'sup' }) => {
   return <Tag className={classNames(className, styles.grid)}>{children}</Tag>
 }
 

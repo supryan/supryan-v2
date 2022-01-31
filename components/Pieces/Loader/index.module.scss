@@ -1,0 +1,39 @@
+@use 'mixins' as m;
+@use 'variables' as v;
+@use 'typography' as t;
+
+.loader {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.3s ease;
+  transition-delay: 0.5s;
+  width: 100%;
+  z-index: v.$z-1;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+}
+
+.overlay {
+  background-color: v.$sunny;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.loaderContainer {
+  transform: scale(0.25);
+}

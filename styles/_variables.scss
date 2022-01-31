@@ -1,8 +1,9 @@
 // COLORS
 $transparent: transparent;
 $white: #fff;
-$true-black: #000;
+$black: #000;
 $prismic-purple: #5163ba;
+$sunny: #ffe883;
 
 // BREAKPOINTS
 $tablet: 768px;
@@ -18,13 +19,15 @@ $breakpoints: (
 );
 
 // TYPE
-$font-primary: sans-serif;
+$font-primary: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-headline: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$font-display: 'Bungee', 'Helvetica', 'Arial', sans-serif;
 $font-family: $font-primary;
 
 // SPACING
 $grid-gap: 8px;
 $grid-gap-md: 16px;
-$max-width: 1376px;
+$max-width: 1000px;
 $gutter: $grid-gap * 2;
 $gutter-md: $grid-gap-md * 2;
 $slice-pad: 40px;

@@ -1,0 +1,18 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.projectList {
+  background-color: v.$white;
+  height: 100vh;
+  left: 0;
+  margin-top: -15vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.container {
+  @include m.container;
+
+  padding-top: 30vh;
+}
