@@ -1,0 +1,19 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.item {
+  padding: v.$gutter 0;
+}
+
+.title {
+  margin-bottom: 15px;
+
+  h1 {
+    @include t.headline1;
+  }
+}
+
+.description {
+  @include t.body-sm;
+}

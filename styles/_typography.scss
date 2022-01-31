@@ -77,3 +77,26 @@
 
   font-weight: 300;
 }
+
+@mixin body-sm {
+  @include m.font(
+    $font-family: v.$font-primary,
+    $font-size: (
+      sm: 16px,
+      md: 16px,
+      lg: 18px,
+    ),
+    $line-height: (
+      sm: 1.5,
+      md: 1.5,
+      lg: 1.5,
+    ),
+    $letter-spacing: (
+      sm: 0.75px,
+      md: 0.75px,
+      lg: 0.75px,
+    )
+  );
+
+  font-weight: 300;
+}

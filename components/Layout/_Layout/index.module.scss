@@ -4,7 +4,11 @@
 
 .layout {
   background-color: v.$white;
-  margin-top: -35vh;
+  margin-top: -25vh;
+
+  @include m.breakpoint(v.$md) {
+    margin-top: -35vh;
+  }
 }
 
 .wrapper {

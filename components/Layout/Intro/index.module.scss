@@ -44,7 +44,7 @@
 
 .sup {
   grid-column: 1 / -1;
-  padding: v.$slice-pad-md;
+  padding: v.$slice-pad-md v.$slice-pad v.$slice-pad;
 
   @include m.breakpoint(v.$md) {
     grid-column: 1 / span 6;
@@ -61,9 +61,11 @@
 
 .hero {
   grid-column: 1 / -1;
+  text-align: center;
 
   @include m.breakpoint(v.$md) {
     grid-column: 8 / span 5;
+    text-align: left;
   }
 }
 
@@ -74,12 +76,11 @@
 .heroBody {
   @include t.body-lg;
 
-  margin-top: v.$gutter;
-  max-width: 85%;
+  margin-top: 15px;
 }
 
 .nav {
-  margin-top: v.$gutter;
+  margin-top: 15px;
 }
 
 .link {

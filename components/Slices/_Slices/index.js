@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import Featured from 'components/Slices/Featured'
-import ProjectList from 'components/Slices/ProjectList'
 import Intro from 'components/Layout/Intro'
+import Projects from 'components/Slices/Projects/_Projects'
 
-const Slices = ({ slices }) => {
+const Slices = ({ slices, projects }) => {
   return (
     <>
       {slices?.map((slice, i) => {
@@ -18,8 +18,8 @@ const Slices = ({ slices }) => {
             Component = <Featured {...primary} />
             break
           }
-          case 'project_list': {
-            Component = <ProjectList {...primary} items={items} />
+          case 'projects': {
+            Component = <Projects {...primary} items={projects} />
             break
           }
           default:

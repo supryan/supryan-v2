@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import pageShape from './shape'
 import { getMetaData } from 'components/Meta/lib'
 
-const Page = ({ page, header, preview }) => {
+const Page = ({ page, projects, header, preview }) => {
   const router = useRouter()
   if (!router.isFallback && !page?.id) {
     return <ErrorPage statusCode={404} />
@@ -18,7 +18,9 @@ const Page = ({ page, header, preview }) => {
 
   return (
     <Layout preview={preview} metadata={metadata} header={header}>
-      {page?.data?.body && <Slices slices={page?.data?.body} />}
+      {page?.data?.body && (
+        <Slices slices={page?.data?.body} projects={projects} />
+      )}
     </Layout>
   )
 }

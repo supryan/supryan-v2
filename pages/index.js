@@ -1,5 +1,6 @@
 // An index.js file is required for deploying w/ vercel
 import { PrismicClient, api } from 'lib/api'
+import Prismic from 'prismic-javascript'
 import Page from 'components/Templates/Page'
 import { pageSlugFetchLinks } from 'constants/page'
 
@@ -16,6 +17,13 @@ export async function getStaticProps({ preview = false, previewData }) {
 
   let page = await PrismicClient.getByID(HOME_ID, { ref })
 
+  const { results: projects } = await PrismicClient.query(
+    Prismic.Predicates.at('document.type', 'project'),
+    {
+      orderings: '[my.project.date desc]',
+    }
+  )
+
   // Manually set homepage data
   if (!page?.data?.body) {
     page.data.body = [
@@ -24,7 +32,7 @@ export async function getStaticProps({ preview = false, previewData }) {
       },
 
       {
-        slice_type: 'project_list',
+        slice_type: 'projects',
         items: [],
       },
     ]
@@ -33,6 +41,7 @@ export async function getStaticProps({ preview = false, previewData }) {
   return {
     props: {
       preview,
+      projects: projects ?? null,
       page: page ?? null,
       header: header ?? null,
     },
