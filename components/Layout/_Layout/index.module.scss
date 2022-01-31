@@ -1,0 +1,18 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.layout {
+  background-color: v.$white;
+  margin-top: -35vh;
+}
+
+.wrapper {
+  padding-top: 30vh;
+  pointer-events: none;
+  z-index: 2;
+
+  > * {
+    pointer-events: auto;
+  }
+}

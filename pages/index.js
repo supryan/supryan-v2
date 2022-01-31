@@ -13,7 +13,22 @@ export async function getStaticProps({ preview = false, previewData }) {
     fetchLinks: pageSlugFetchLinks,
     ref,
   })
-  const page = await PrismicClient.getByID(HOME_ID, { ref })
+
+  let page = await PrismicClient.getByID(HOME_ID, { ref })
+
+  // Manually set homepage data
+  if (!page?.data?.body) {
+    page.data.body = [
+      {
+        slice_type: 'featured',
+      },
+
+      {
+        slice_type: 'project_list',
+        items: [],
+      },
+    ]
+  }
 
   return {
     props: {

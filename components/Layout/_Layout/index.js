@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import headerShape from 'components/Layout/Header/shape'
 import metaShape from 'components/Layout/Meta/shape'
 import Intro from '../Intro'
-import ProjectList from 'components/Slices/ProjectList'
+import styles from './index.module.scss'
 
 const Layout = ({ metadata, header, preview, children }) => {
   return (
@@ -19,9 +19,15 @@ const Layout = ({ metadata, header, preview, children }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}>
-        <main>
-          <Intro />
-          <ProjectList />
+        <Intro {...header} />
+        <main className={styles.layout}>
+          <motion.sup
+            initial={{ y: '100vh' }}
+            animate={{ y: 0 }}
+            transition={{ delay: 1.25, duration: 1 }}
+            className={styles.wrapper}>
+            {children}
+          </motion.sup>
         </main>
       </motion.sup>
       {/* <Footer /> */}

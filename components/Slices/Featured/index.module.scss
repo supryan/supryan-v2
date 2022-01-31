@@ -1,0 +1,37 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.featured {
+  margin-bottom: v.$slice-pad-md;
+}
+
+.container {
+  @include m.container;
+}
+
+.wrapper {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.65%;
+  position: relative;
+  transform: skewY(-5deg);
+  width: 100%;
+
+  video {
+    background-color: #ccc;
+    height: 100%;
+    position: absolute;
+    transform: skewY(5deg) scale(1.2);
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.header {
+  background-color: v.$black;
+  color: v.$white;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+}

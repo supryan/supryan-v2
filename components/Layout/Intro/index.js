@@ -7,8 +7,10 @@ import useScrollLock from 'use-scroll-lock'
 import { useEffect, useState } from 'react'
 import Loader from 'components/Pieces/Loader'
 import ShadowText from 'components/Pieces/ShadowText'
+import RichTextComponent from 'components/Slices/RichText'
+import PrismicLink from 'components/Pieces/PrismicLink'
 
-const Intro = () => {
+const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
   const [complete, setComplete] = useState(false)
 
@@ -48,10 +50,19 @@ const Intro = () => {
               </ShadowText>
             </sup>
             <sup className={styles.hero}>
-              <h1 className={styles.heroTitle}>I&apos;m Ryan Gordon.</h1>
+              {title && <h1 className={styles.heroTitle}>{title}</h1>}
               <sup className={styles.heroBody}>
-                Creative Technologist. I make things for the Internet. ✌️
+                <RichTextComponent richtext={description} />
               </sup>
+              <nav className={styles.nav}>
+                {links?.map(({ link, link_text }, i) => {
+                  return (
+                    <PrismicLink key={i} link={link} className={styles.link}>
+                      {link_text}
+                    </PrismicLink>
+                  )
+                })}
+              </nav>
             </sup>
           </Grid>
         </motion.sup>
