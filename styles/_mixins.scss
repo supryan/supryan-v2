@@ -8,6 +8,7 @@
 
 @mixin font(
   $font-family: v.$font-family,
+  $font-weight: normal,
   $font-size: (
     sm: 16px,
     md: 16px,
@@ -26,6 +27,7 @@
 ) {
   font-family: $font-family;
   font-size: map-get($font-size, sm);
+  font-weight: $font-weight;
   letter-spacing: map-get($letter-spacing, sm);
   line-height: map-get($line-height, sm);
 

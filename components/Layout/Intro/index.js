@@ -10,6 +10,9 @@ import ShadowText from 'components/Pieces/ShadowText'
 import RichTextComponent from 'components/Slices/RichText'
 import PrismicLink from 'components/Pieces/PrismicLink'
 import prismicRichTextShape from 'shapes/prismic/richtext'
+import CameraIcon from 'public/images/camera.svg'
+import DocumentIcon from 'public/images/document.svg'
+import ArrowIcon from 'public/images/arrow.svg'
 
 const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
@@ -58,9 +61,17 @@ const Intro = ({ title, description, links }) => {
               <nav className={styles.nav}>
                 {links?.map(({ link, link_text }, i) => {
                   return (
-                    <PrismicLink key={i} link={link} className={styles.link}>
-                      {link_text}
-                    </PrismicLink>
+                    <sup key={i} className={styles.linkWrapper}>
+                      {link_text === 'Video Reel' ? (
+                        <CameraIcon />
+                      ) : (
+                        <DocumentIcon />
+                      )}
+                      <PrismicLink link={link} className={styles.link}>
+                        {link_text}
+                      </PrismicLink>
+                      <ArrowIcon />
+                    </sup>
                   )
                 })}
               </nav>

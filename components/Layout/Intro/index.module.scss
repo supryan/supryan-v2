@@ -83,6 +83,18 @@
   margin-top: 15px;
 }
 
+.linkWrapper {
+  align-items: center;
+  display: inline-flex;
+  margin-right: v.$grid-gap;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
 .link {
-  @include m.button;
+  @include t.link;
+
+  text-transform: uppercase;
 }

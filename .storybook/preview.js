@@ -1,5 +1,6 @@
 // Styles that need to be globally accessible to components
 import 'normalize.css'
+import '../styles/fonts.css'
 import '../styles/global.scss'
 
 import * as nextImage from 'next/image'

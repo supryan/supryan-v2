@@ -2,9 +2,11 @@ import PropTypes from 'prop-types'
 import styles from './index.module.scss'
 import Item from '../Item'
 import Grid from 'components/Layout/Grid'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useContext } from 'react'
+import { ScrollSpyContext } from 'lib/contexts/scroll-spy-context'
 
 const Projects = ({ items }) => {
+  const { activeItem } = useContext(ScrollSpyContext)
   const ref = useRef()
   const flagRef = useRef()
 
@@ -36,7 +38,9 @@ const Projects = ({ items }) => {
         <Grid className={styles.grid}>
           <sup className={styles.marker}>
             <sup ref={flagRef} className={styles.flag}>
-              2022
+              {activeItem?.date
+                ? new Date(activeItem.date).getFullYear()
+                : new Date().getFullYear()}
             </sup>
           </sup>
           <sup className={styles.projects}>

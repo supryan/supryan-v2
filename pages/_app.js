@@ -1,11 +1,11 @@
 import 'normalize.css'
-import 'nprogress/nprogress.css'
+import '../styles/fonts.css'
 import '../styles/global.scss'
 import PropTypes from 'prop-types'
-import NProgress from 'nprogress'
 import { AnimatePresence } from 'framer-motion'
 import * as analytics from 'lib/analytics'
 import { useEffect } from 'react'
+import ScrollSpyContextProvider from 'lib/contexts/scroll-spy-context'
 
 function MyApp({ Component, pageProps, router }) {
   useEffect(() => {
@@ -29,9 +29,11 @@ function MyApp({ Component, pageProps, router }) {
 
   return (
     // to remove page transitions, remove AnimatePresence wrapper and motion.div in Layout component
-    <AnimatePresence exitBeforeEnter>
-      <Component {...pageProps} key={router.asPath} />
-    </AnimatePresence>
+    <ScrollSpyContextProvider>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
+    </ScrollSpyContextProvider>
   )
 }
 
