@@ -71,6 +71,9 @@
 
 .heroTitle {
   @include t.headline1;
+
+  align-items: center;
+  display: inline-flex;
 }
 
 .heroBody {
@@ -80,7 +83,7 @@
 }
 
 .nav {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .linkWrapper {
@@ -97,4 +100,35 @@
   @include t.link;
 
   text-transform: uppercase;
+}
+
+.cursor {
+  animation: blink 1.1s linear infinite;
+  background-color: v.$black;
+  height: 25px;
+  margin-left: 10px;
+  width: 15px;
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    50.01% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @include m.breakpoint(v.$md) {
+    height: 30px;
+    width: 17px;
+  }
 }

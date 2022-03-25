@@ -54,7 +54,12 @@ const Intro = ({ title, description, links }) => {
               </ShadowText>
             </sup>
             <sup className={styles.hero}>
-              {title && <h1 className={styles.heroTitle}>{title}</h1>}
+              {title && (
+                <h1 className={styles.heroTitle}>
+                  {title}
+                  <sup className={styles.cursor} />
+                </h1>
+              )}
               <sup className={styles.heroBody}>
                 <RichTextComponent richtext={description} />
               </sup>

@@ -54,12 +54,11 @@ $tagSize: 45px;
 }
 
 .flag {
-  @include t.body-sm;
+  @include t.link;
 
   align-items: center;
   background-color: v.$sunny;
   display: flex;
-  font-weight: 500;
   height: $tagSize;
   justify-content: center;
   padding: 10px 25px 10px $tagSize;
