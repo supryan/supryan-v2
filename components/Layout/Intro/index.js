@@ -9,6 +9,7 @@ import Loader from 'components/Pieces/Loader'
 import ShadowText from 'components/Pieces/ShadowText'
 import RichTextComponent from 'components/Slices/RichText'
 import PrismicLink from 'components/Pieces/PrismicLink'
+import prismicRichTextShape from 'shapes/prismic/richtext'
 
 const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
@@ -73,4 +74,8 @@ const Intro = ({ title, description, links }) => {
 
 export default Intro
 
-Intro.propTypes = { prop: PropTypes.string }
+Intro.propTypes = {
+  title: PropTypes.string,
+  description: prismicRichTextShape,
+  links: PropTypes.array,
+}

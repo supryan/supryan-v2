@@ -1,0 +1,82 @@
+@use 'typography' as t;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.footer {
+  background-color: v.$white;
+  position: relative;
+
+  &::before {
+    background-color: v.$black;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 150px;
+    left: 0;
+    transform: skewY(5deg);
+    transform-origin: bottom left;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &::after {
+    background-color: v.$black;
+    content: '';
+    display: block;
+    height: 30vw;
+    left: 0;
+    width: 100%;
+
+    @include m.breakpoint(v.$md) {
+      height: 15vw;
+    }
+  }
+}
+
+.container {
+  @include m.container;
+
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 55%;
+  transform: translateY(-55%);
+  width: 100%;
+}
+
+.brand {
+  grid-column: 1 / -1;
+  z-index: 2;
+
+  @include m.breakpoint(v.$md) {
+    align-items: flex-end;
+    display: flex;
+  }
+}
+
+.logo {
+  height: auto;
+  width: 100px;
+
+  * {
+    transform: none !important;
+  }
+}
+
+.links {
+  margin-bottom: 10px;
+
+  a {
+    color: v.$sunny;
+    display: block;
+    font-weight: 700;
+    margin-top: 20px;
+    text-decoration: none;
+
+    @include m.breakpoint(v.$md) {
+      display: inline;
+      margin-left: v.$grid-gap-md;
+      margin-top: 0;
+    }
+  }
+}

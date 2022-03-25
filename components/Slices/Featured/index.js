@@ -8,7 +8,7 @@ const Featured = ({ prop }) => {
     <sup className={styles.featured}>
       <sup className={styles.container}>
         <sup className={styles.wrapper}>
-          <sup className={styles.header}>The Latest</sup>
+          <motion.sup className={styles.header}>The Latest</motion.sup>
           <video
             src="https://supryan.cdn.prismic.io/supryan%2F0b14276a-eb2f-4432-bda1-9443962f25d0_ryan%27s+reel+%282015%29+%281%29.mp4"
             autoPlay

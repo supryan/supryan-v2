@@ -1,1 +1,8 @@
 @use 'typography' as t;
+
+.container {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}

@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 import ShadowText from '../ShadowText'
+import Logo from '../Logo'
 
 const Loader = ({ loading, timeout = 0, overlay = true }) => {
   const [active, setActive] = useState(loading ?? true)
@@ -29,7 +30,7 @@ const Loader = ({ loading, timeout = 0, overlay = true }) => {
       className={classNames(styles.loader, { [styles.active]: active })}>
       {overlay && <sup className={styles.overlay} />}
       <sup className={styles.loaderContainer}>
-        <ShadowText loop>RG</ShadowText>
+        <Logo animate={true} />
       </sup>
     </sup>
   )

@@ -2,7 +2,7 @@
 import { PrismicClient, api } from 'lib/api'
 import Prismic from 'prismic-javascript'
 import Page from 'components/Templates/Page'
-import { pageSlugFetchLinks } from 'constants/page'
+import { pageFetchLinks } from 'constants/page'
 
 export default Page
 
@@ -10,8 +10,13 @@ export async function getStaticProps({ preview = false, previewData }) {
   const { masterRef } = await PrismicClient.getApi()
   const ref = previewData?.ref || masterRef.ref
   const HOME_ID = api.HOME_ID
+  const { data: globals } = await PrismicClient.getSingle('globals', {
+    fetchLinks: pageFetchLinks,
+    ref,
+  })
+
   const { data: header } = await PrismicClient.getSingle('header', {
-    fetchLinks: pageSlugFetchLinks,
+    fetchLinks: pageFetchLinks,
     ref,
   })
 
@@ -20,6 +25,7 @@ export async function getStaticProps({ preview = false, previewData }) {
   const { results: projects } = await PrismicClient.query(
     Prismic.Predicates.at('document.type', 'project'),
     {
+      fetchLinks: pageFetchLinks,
       orderings: '[my.project.date desc]',
     }
   )
@@ -44,6 +50,7 @@ export async function getStaticProps({ preview = false, previewData }) {
       projects: projects ?? null,
       page: page ?? null,
       header: header ?? null,
+      globals: globals ?? null,
     },
     revalidate: 1,
   }

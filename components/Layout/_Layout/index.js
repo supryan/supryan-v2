@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import PreviewBar from '../PreviewBar'
 import Footer from '../Footer'
-import Header from '../Header'
 import Meta from '../Meta'
 import { motion } from 'framer-motion'
 import headerShape from 'components/Layout/Header/shape'
@@ -9,12 +8,11 @@ import metaShape from 'components/Layout/Meta/shape'
 import Intro from '../Intro'
 import styles from './index.module.scss'
 
-const Layout = ({ metadata, header, preview, children }) => {
+const Layout = ({ metadata, globals, header, preview, children }) => {
   return (
     <>
       <Meta metadata={metadata} defaults={null} />
       {preview && <PreviewBar />}
-      {/* <Header header={header} /> */}
       <motion.sup
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -30,13 +28,14 @@ const Layout = ({ metadata, header, preview, children }) => {
           </motion.sup>
         </main>
       </motion.sup>
-      {/* <Footer /> */}
+      <Footer footer={globals} />
     </>
   )
 }
 
 Layout.propTypes = {
   metadata: metaShape,
+  globals: PropTypes.object,
   header: headerShape,
   preview: PropTypes.bool,
   children: PropTypes.node,
