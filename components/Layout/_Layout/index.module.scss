@@ -2,6 +2,11 @@
 @use 'mixins' as m;
 @use 'variables' as v;
 
+.wrapper {
+  min-height: 100vh;
+  z-index: 1;
+}
+
 .layout {
   background-color: v.$white;
   margin-top: -25vh;
@@ -9,12 +14,25 @@
   @include m.breakpoint(v.$md) {
     margin-top: -35vh;
   }
+
+  &::after {
+    background-color: v.$white;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 10vw;
+    left: 0;
+    transform: skewY(5deg);
+    transform-origin: bottom left;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
-.wrapper {
+.inner {
   padding-top: 30vh;
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
 
   > * {
     pointer-events: auto;

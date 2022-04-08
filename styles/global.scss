@@ -5,6 +5,7 @@ html {
   background-color: v.$sunny;
   font-family: v.$font-primary;
   font-weight: 300;
+  scroll-snap-type: y proximity;
 }
 
 body {

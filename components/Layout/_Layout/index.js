@@ -16,14 +16,15 @@ const Layout = ({ metadata, globals, header, preview, children }) => {
       <motion.sup
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}>
+        exit={{ opacity: 0 }}
+        className={styles.wrapper}>
         <Intro {...header} />
         <main className={styles.layout}>
           <motion.sup
             initial={{ y: '100vh' }}
             animate={{ y: 0 }}
             transition={{ delay: 1.25, duration: 1 }}
-            className={styles.wrapper}>
+            className={styles.inner}>
             {children}
           </motion.sup>
         </main>

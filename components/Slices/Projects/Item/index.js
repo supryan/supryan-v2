@@ -7,6 +7,7 @@ import prismicRichTextShape from 'shapes/prismic/richtext'
 const Item = ({ title, description, categories, date, ...props }) => {
   const { ref } = useScrollSpy({
     date,
+    delay: 500,
   })
 
   return (

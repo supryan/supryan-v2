@@ -2,9 +2,6 @@
 @use 'mixins' as m;
 @use 'variables' as v;
 
-/* stylelint-disable-next-line scss/dollar-variable-pattern */
-$tagSize: 45px;
-
 .projectList {
   padding: 50px 0;
   width: 100%;
@@ -50,32 +47,5 @@ $tagSize: 45px;
   @include m.breakpoint(v.$md) {
     grid-column: 2 / span 11;
     padding-left: 20px;
-  }
-}
-
-.flag {
-  @include t.link;
-
-  align-items: center;
-  background-color: v.$sunny;
-  display: flex;
-  height: $tagSize;
-  justify-content: center;
-  padding: 10px 25px 10px $tagSize;
-  position: sticky;
-  top: 50vh;
-  transform: skewY(-5deg) translateY(5px);
-  z-index: -1;
-
-  &::before {
-    border-bottom: $tagSize / 2 solid transparent;
-    border-left: $tagSize / 2 solid v.$white;
-    border-top: $tagSize / 2 solid transparent;
-    content: '';
-    height: 0;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 0;
   }
 }

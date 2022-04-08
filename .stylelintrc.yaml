@@ -12,5 +12,8 @@ rules:
         - else
   selector-class-pattern: null
   selector-max-id: 1
+  selector-max-compound-selectors: 4
   no-descending-specificity: null
   selector-type-no-unknown: null
+  function-parentheses-space-inside: never-single-line
+  selector-pseudo-class-no-unknown: [true, { ignorePseudoClasses: ['global'] }]

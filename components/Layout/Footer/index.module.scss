@@ -4,7 +4,13 @@
 
 .footer {
   background-color: v.$white;
-  position: relative;
+  bottom: 0;
+  position: sticky;
+
+  :global([data-scroll-lock-locked]) & {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   &::before {
     background-color: v.$black;
