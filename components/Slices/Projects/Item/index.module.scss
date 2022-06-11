@@ -5,17 +5,27 @@
 .item {
   padding: v.$gutter 0;
   position: relative;
-  scroll-snap-align: center;
   transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
   &:first-child {
     padding-top: 0;
   }
+}
 
-  &:hover {
-    .overlay {
-      opacity: 0;
-    }
+.overlay {
+  background-color: v.$white;
+  height: 100%;
+  left: 0;
+  opacity: 0.7;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  z-index: 2;
+
+  &.active {
+    opacity: 0;
   }
 }
 
@@ -31,6 +41,25 @@
   @include t.body-sm;
 }
 
+.grid {
+  height: 100%;
+}
+
+.details {
+  background-color: v.$white;
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+  transition: height 0.3s 0.5s ease;
+  will-change: height;
+  z-index: 3;
+
+  &.active {
+    height: 75px;
+  }
+}
+
 .tag {
   background-color: v.$sunny;
   margin-bottom: v.$grid-gap;
@@ -40,4 +69,24 @@
 .tags {
   position: absolute;
   transform: translateX(-100%);
+}
+
+.image {
+  border-radius: 5px;
+  grid-column: 1 / -1;
+
+  @include m.breakpoint(v.$md) {
+    grid-column: span 7;
+    margin-bottom: v.$grid-gap;
+  }
+}
+
+.meta {
+  border-radius: 5px;
+  grid-column: 1 / -1;
+  margin-bottom: v.$grid-gap;
+
+  @include m.breakpoint(v.$md) {
+    grid-column: 8 / -1;
+  }
 }

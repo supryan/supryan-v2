@@ -97,21 +97,100 @@
 }
 
 @mixin button(
-  $bg: v.$black,
-  $color: v.$white,
+  $bg: v.$sunny,
+  $color: v.$black,
   $hover-bg: v.$prismic-purple,
   $hover-color: v.$white
 ) {
-  background: $bg;
+  align-items: center;
+  background-color: $bg;
+  box-shadow: -8px 8px 0 v.$sunny-alt;
   color: $color;
-  display: inline-flex;
-  padding: 8px 40px;
+  cursor: pointer;
+  display: flex;
+  font-family: v.$font-headline;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 900;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  line-height: normal;
+  margin-left: 10px;
+  margin-top: 0;
+  padding: 3px 8px;
+  position: relative;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
+  top: 0;
+  transition: box-shadow 0.05s, top 0.05s, left 0.05s;
+  white-space: nowrap;
 
-  &:hover {
-    background: $hover-bg;
-    color: $hover-color;
+  @include breakpoint(v.$md) {
+    &:hover,
+    &:focus {
+      background-color: v.$black;
+      color: v.$white;
+
+      &::before {
+        background-color: v.$black;
+      }
+
+      &::after {
+        background-color: v.$black;
+      }
+    }
+  }
+
+  &::after {
+    background-color: v.$sunny-alt;
+    content: '';
+    height: 12px;
+    left: -6px;
+    position: absolute;
+    top: 1px;
+    transform: rotate(45deg);
+    transition: top 0.05s, left 0.05s;
+    width: 12px;
+    z-index: -1;
+  }
+
+  &::before {
+    background-color: v.$sunny-alt;
+    bottom: -6px;
+    content: '';
+    height: 12px;
+    position: absolute;
+    right: 1px;
+    transform: rotate(45deg);
+    transition: bottom 0.05s, right 0.05s;
+    width: 12px;
+    z-index: -1;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: -8px 8px 0 v.$black;
     text-decoration: none;
+    transition: box-shadow 0s;
+  }
+
+  &:active {
+    box-shadow: 0 0 0 v.$black;
+    left: -8px;
+    text-decoration: none;
+    top: 8px;
+    transition: box-shadow 0.05s, top 0.05s, left 0.05s;
+
+    &::before {
+      bottom: 12px;
+      right: 12px;
+    }
+
+    &::after {
+      left: 12px;
+      top: 12px;
+    }
   }
 }

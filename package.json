@@ -36,6 +36,7 @@
     "react-slick": "^0.28.1",
     "react-textfit": "^1.1.1",
     "sass": "^1.38.2",
+    "scroll-snap": "^4.0.3",
     "slick-carousel": "^1.8.1",
     "use-scroll-lock": "^1.0.0"
   },

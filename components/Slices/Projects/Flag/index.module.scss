@@ -17,6 +17,7 @@ $tagSize: 45px;
   position: sticky;
   top: 50vh;
   transform: skewY(-5deg) translateY(5px);
+  will-change: transform;
   z-index: -1;
 
   &::before {
