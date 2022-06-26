@@ -23,6 +23,11 @@ body {
   outline: none;
 }
 
+::selection {
+  background-color: v.$sunny;
+  -webkit-tap-highlight-color: rgba(255, 232, 131, 1);
+}
+
 h1,
 h2,
 h3,

@@ -4,19 +4,25 @@
 
 /* stylelint-disable-next-line scss/dollar-variable-pattern */
 $tagSize: 45px;
+$bg-contrast: darken(v.$sunny, 45%);
 
 .flag {
   @include t.link;
 
   align-items: center;
   background-color: v.$sunny;
+  /* stylelint-disable value-list-comma-newline-after */
+  box-shadow: 1px 1px 0 $bg-contrast, 2px 2px 0 $bg-contrast,
+    3px 3px 0 $bg-contrast, 4px 4px 0 $bg-contrast, 5px 5px 0 $bg-contrast,
+    6px 6px 0 $bg-contrast;
+  /* stylelint-enable value-list-comma-newline-after */
   display: flex;
   height: $tagSize;
   justify-content: center;
   padding: 10px 25px 10px $tagSize;
   position: sticky;
   top: 50vh;
-  transform: skewY(-5deg) translateY(5px);
+  transform: skewY(-5deg) translateY(5px) translateX(-7px);
   will-change: transform;
   z-index: -1;
 

@@ -98,6 +98,28 @@
   );
 }
 
+@mixin body-mono {
+  @include m.font(
+    $font-family: v.$font-mono,
+    $font-weight: 200,
+    $font-size: (
+      sm: 12px,
+      md: 14px,
+      lg: 14px,
+    ),
+    $line-height: (
+      sm: 1.5,
+      md: 1.5,
+      lg: 1.5,
+    ),
+    $letter-spacing: (
+      sm: 0.75px,
+      md: 0.75px,
+      lg: 0.75px,
+    )
+  );
+}
+
 @mixin link {
   @include m.font(
     $font-family: v.$font-headline,

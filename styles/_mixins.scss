@@ -99,17 +99,19 @@
 @mixin button(
   $bg: v.$sunny,
   $color: v.$black,
-  $hover-bg: v.$prismic-purple,
+  $hover-bg: v.$black-alt,
   $hover-color: v.$white
 ) {
+  $bg-contrast: darken($bg, 45%);
+
   align-items: center;
   background-color: $bg;
-  box-shadow: -8px 8px 0 v.$sunny-alt;
+  box-shadow: -8px 8px 0 $bg-contrast;
   color: $color;
   cursor: pointer;
   display: flex;
   font-family: v.$font-headline;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 900;
   height: 100%;
@@ -118,7 +120,7 @@
   line-height: normal;
   margin-left: 10px;
   margin-top: 0;
-  padding: 3px 8px;
+  padding: 5px 8px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -128,28 +130,27 @@
   white-space: nowrap;
 
   @include breakpoint(v.$md) {
-    &:hover,
-    &:focus {
-      background-color: v.$black;
-      color: v.$white;
+    &:hover {
+      background-color: $hover-bg;
+      color: $hover-color;
 
       &::before {
-        background-color: v.$black;
+        background-color: $hover-bg;
       }
 
       &::after {
-        background-color: v.$black;
+        background-color: $hover-bg;
       }
     }
   }
 
   &::after {
-    background-color: v.$sunny-alt;
+    background-color: $bg-contrast;
     content: '';
     height: 12px;
-    left: -6px;
+    left: -5px;
     position: absolute;
-    top: 1px;
+    top: 2px;
     transform: rotate(45deg);
     transition: top 0.05s, left 0.05s;
     width: 12px;
@@ -157,27 +158,26 @@
   }
 
   &::before {
-    background-color: v.$sunny-alt;
+    background-color: $bg-contrast;
     bottom: -6px;
     content: '';
     height: 12px;
     position: absolute;
-    right: 1px;
+    right: 2px;
     transform: rotate(45deg);
     transition: bottom 0.05s, right 0.05s;
     width: 12px;
     z-index: -1;
   }
 
-  &:hover,
-  &:focus {
-    box-shadow: -8px 8px 0 v.$black;
+  &:hover {
+    box-shadow: -8px 8px 0 $hover-bg;
     text-decoration: none;
     transition: box-shadow 0s;
   }
 
   &:active {
-    box-shadow: 0 0 0 v.$black;
+    box-shadow: 0 0 0 $hover-bg;
     left: -8px;
     text-decoration: none;
     top: 8px;

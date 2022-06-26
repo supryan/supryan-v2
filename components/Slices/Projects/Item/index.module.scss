@@ -39,9 +39,19 @@
 
 .description {
   @include t.body-sm;
+
+  a {
+    font-style: italic;
+
+    &:hover {
+      color: darken(v.$sunny, 40%);
+    }
+  }
 }
 
 .grid {
+  align-items: flex-end;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
 }
 
@@ -56,7 +66,7 @@
   z-index: 3;
 
   &.active {
-    height: 75px;
+    height: 300px;
   }
 }
 
@@ -72,21 +82,67 @@
 }
 
 .image {
+  background-color: #eee;
   border-radius: 5px;
   grid-column: 1 / -1;
+  height: 300px;
+  margin-bottom: v.$grid-gap;
 
   @include m.breakpoint(v.$md) {
-    grid-column: span 7;
-    margin-bottom: v.$grid-gap;
+    grid-column: span 6;
+    height: 100%;
   }
 }
 
 .meta {
   border-radius: 5px;
   grid-column: 1 / -1;
-  margin-bottom: v.$grid-gap;
+  height: 100%;
 
   @include m.breakpoint(v.$md) {
-    grid-column: 8 / -1;
+    grid-column: 7 / span 4;
   }
+}
+
+.categories {
+  align-items: center;
+  display: flex;
+  margin-bottom: 11px;
+}
+
+.category {
+  @include m.button(
+    $bg: v.$black-alt,
+    $color: v.$white,
+    $hover-bg: v.$black-alt
+  );
+}
+
+.data {
+  @include t.body-mono;
+
+  height: 100%;
+  margin-bottom: 15px;
+
+  @include m.breakpoint(v.$md) {
+    max-width: 200px;
+  }
+
+  > * {
+    margin-bottom: 10px;
+  }
+}
+
+.cta {
+  height: auto !important;
+}
+
+.metaWrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.categoriesWrap {
+  margin-bottom: 23px;
 }

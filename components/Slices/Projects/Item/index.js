@@ -9,10 +9,13 @@ import createScrollSnap from 'scroll-snap'
 import Grid from 'components/Layout/Grid'
 import Button from 'components/Pieces/Button'
 import ArrowIcon from 'public/images/arrow.svg'
+import { hasLink } from 'lib/links'
 
 const Item = ({ title, description, categories, date, link, ...props }) => {
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
+
+  console.log(categories)
 
   return (
     <sup ref={ref} className={styles.item} {...props}>
@@ -30,12 +33,32 @@ const Item = ({ title, description, categories, date, link, ...props }) => {
           [styles.active]: inView,
         })}>
         <Grid className={styles.grid}>
-          <div className={styles.image}></div>
-          <div className={styles.meta}>
-            <Button link={link}>
-              Check it out <ArrowIcon />
-            </Button>
-          </div>
+          <sup className={styles.image}></sup>
+          <sup className={styles.meta}>
+            <sup className={styles.metaWrap}>
+              <sup className={styles.data}>
+                <sup>Status: Complete</sup>
+                <sup>Affiliates: New-York Historical Society, Use All Five</sup>
+                <sup>Roles: Front End Development, UI/UX Strategy</sup>
+              </sup>
+              <sup className={styles.categoriesWrap}>
+                <sup className={styles.categories}>
+                  {categories?.map(({ category }, i) => {
+                    return (
+                      <button key={`category-${i}`} className={styles.category}>
+                        {category?.data?.name}
+                      </button>
+                    )
+                  })}
+                </sup>
+                {hasLink(link) && (
+                  <Button link={link} className={styles.cta}>
+                    Check it out <ArrowIcon />
+                  </Button>
+                )}
+              </sup>
+            </sup>
+          </sup>
         </Grid>
       </sup>
       <sup className={styles.description}>

@@ -6,12 +6,12 @@ import prismicLinkShape from 'shapes/prismic/link'
 import { hasLink } from 'lib/links'
 
 const Button = ({ className, link, children }) => {
-  return (
-    hasLink(link) && (
-      <PrismicLink link={link} className={classNames(className, styles.button)}>
-        {children}
-      </PrismicLink>
-    )
+  return hasLink(link) ? (
+    <PrismicLink link={link} className={classNames(styles.button, className)}>
+      {children}
+    </PrismicLink>
+  ) : (
+    <div className={classNames(className, styles.button)}>{children}</div>
   )
 }
 Button.propTypes = {
