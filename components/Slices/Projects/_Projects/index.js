@@ -17,7 +17,11 @@ const Projects = ({ items }) => {
           </sup>
           <sup className={styles.projects}>
             {items?.map((item, index) => (
-              <Item key={`project-item-${index}`} {...item?.data} />
+              <Item
+                key={`project-item-${index}`}
+                tags={item?.tags}
+                {...item?.data}
+              />
             ))}
           </sup>
         </Grid>

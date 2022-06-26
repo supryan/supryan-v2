@@ -28,9 +28,29 @@
 @font-face {
   font-display: swap;
   font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 200;
-  src: local(''),
+  font-style: monospace;
+  font-weight: 400;
+  src:
+    url('/fonts/source-code-pro-v21-latin-400.woff2') format('woff2'),
+    url('/fonts/source-code-pro-v21-latin-400.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Source Code Pro';
+  font-style: monospace;
+  font-weight: 300;
+  src:
     url('/fonts/source-code-pro-v21-latin-300.woff2') format('woff2'),
     url('/fonts/source-code-pro-v21-latin-300.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Source Code Pro';
+  font-style: monospace;
+  font-weight: 700;
+  src:
+    url('/fonts/source-code-pro-v21-latin-700.woff2') format('woff2'),
+    url('/fonts/source-code-pro-v21-latin-700.woff') format('woff');
 }

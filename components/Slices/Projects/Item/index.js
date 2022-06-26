@@ -4,18 +4,31 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useCallback, useEffect, useRef } from 'react'
-import createScrollSnap from 'scroll-snap'
+import { useRef } from 'react'
 import Grid from 'components/Layout/Grid'
 import Button from 'components/Pieces/Button'
 import ArrowIcon from 'public/images/arrow.svg'
 import { hasLink } from 'lib/links'
 
-const Item = ({ title, description, categories, date, link, ...props }) => {
+const Item = ({
+  title,
+  description,
+  categories,
+  date,
+  link,
+  roles,
+  tags,
+  ...props
+}) => {
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
 
-  console.log(categories)
+  // Project contains in progress category
+  const isInProgress = () =>
+    categories?.length &&
+    categories?.filter(({ category }) =>
+      category.data?.name.includes('progress')
+    )?.length > 0
 
   return (
     <sup ref={ref} className={styles.item} {...props}>
@@ -37,9 +50,24 @@ const Item = ({ title, description, categories, date, link, ...props }) => {
           <sup className={styles.meta}>
             <sup className={styles.metaWrap}>
               <sup className={styles.data}>
-                <sup>Status: Complete</sup>
-                <sup>Affiliates: New-York Historical Society, Use All Five</sup>
-                <sup>Roles: Front End Development, UI/UX Strategy</sup>
+                <sup>
+                  <strong>Status:</strong>{' '}
+                  {isInProgress() ? 'In Progress' : 'Complete'}
+                </sup>
+                <sup>
+                  {tags?.length > 0 && (
+                    <>
+                      <strong>Affiliates:</strong> {tags.join(', ')}
+                    </>
+                  )}
+                </sup>
+                <sup>
+                  {roles?.length > 0 && (
+                    <>
+                      <strong>Roles:</strong> {roles?.map((data) => data.text)}
+                    </>
+                  )}
+                </sup>
               </sup>
               <sup className={styles.categoriesWrap}>
                 <sup className={styles.categories}>

@@ -129,11 +129,18 @@
   }
 
   > * {
+    font-weight: 300;
     margin-bottom: 10px;
+
+    strong {
+      font-weight: 700;
+    }
   }
 }
 
 .cta {
+  align-items: center;
+  display: inline-flex;
   height: auto !important;
 }
 

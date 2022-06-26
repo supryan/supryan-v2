@@ -22,7 +22,7 @@ export async function getStaticProps({ preview = false, previewData }) {
 
   let page = await PrismicClient.getByID(HOME_ID, { ref })
 
-  const { results: projects } = await PrismicClient.query(
+  const { results: projects, ...props } = await PrismicClient.query(
     Prismic.Predicates.at('document.type', 'project'),
     {
       fetchLinks: pageFetchLinks,

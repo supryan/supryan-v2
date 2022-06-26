@@ -8,10 +8,12 @@ import { hasLink } from 'lib/links'
 const Button = ({ className, link, children }) => {
   return hasLink(link) ? (
     <PrismicLink link={link} className={classNames(styles.button, className)}>
-      {children}
+      <span>{children}</span>
     </PrismicLink>
   ) : (
-    <div className={classNames(className, styles.button)}>{children}</div>
+    <div className={classNames(className, styles.button)}>
+      <span>{children}</span>
+    </div>
   )
 }
 Button.propTypes = {
