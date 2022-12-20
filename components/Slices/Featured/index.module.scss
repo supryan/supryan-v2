@@ -11,11 +11,12 @@
 }
 
 .wrapper {
+  clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
   height: 0;
   overflow: hidden;
   padding-bottom: 56.65%;
   position: relative;
-  transform: skewY(-5deg);
+  transform: skewY(-5deg) translateZ(0);
   width: 100%;
 
   video {
@@ -31,6 +32,7 @@
 .header {
   background-color: v.$black;
   color: v.$white;
+  overflow: hidden;
   padding: 10px;
   position: relative;
   z-index: 2;

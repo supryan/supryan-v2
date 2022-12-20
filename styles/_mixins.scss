@@ -194,3 +194,27 @@
     }
   }
 }
+
+@mixin highlight {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    background-color: v.$sunny;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: width 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    width: 0%;
+    z-index: -1;
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
+}

@@ -3,9 +3,14 @@
 @use 'variables' as v;
 
 .item {
+  cursor: pointer;
   padding: v.$gutter 0;
   position: relative;
   transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  &.active {
+    cursor: auto;
+  }
 
   &:first-child {
     padding-top: 0;
@@ -24,7 +29,7 @@
   width: 100%;
   z-index: 2;
 
-  &.active {
+  .active & {
     opacity: 0;
   }
 }
@@ -41,11 +46,7 @@
   @include t.body-sm;
 
   a {
-    font-style: italic;
-
-    &:hover {
-      color: darken(v.$sunny, 40%);
-    }
+    @include m.highlight;
   }
 }
 
@@ -121,6 +122,7 @@
 .data {
   @include t.body-mono;
 
+  font-size: 12px !important;
   height: 100%;
   margin-bottom: 15px;
 
@@ -142,6 +144,10 @@
   align-items: center;
   display: inline-flex;
   height: auto !important;
+
+  svg {
+    width: 18px;
+  }
 }
 
 .metaWrap {

@@ -4,7 +4,7 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import Grid from 'components/Layout/Grid'
 import Button from 'components/Pieces/Button'
 import ArrowIcon from 'public/images/arrow.svg'
@@ -24,19 +24,39 @@ const Item = ({
   const detailsRef = useRef(null)
 
   // Project contains in progress category
-  const isInProgress = () =>
-    categories?.length &&
-    categories?.filter(({ category }) =>
-      category.data?.name.includes('progress')
+  const isInProgress =
+    useMemo(
+      () =>
+        categories?.length &&
+        categories?.filter(({ category }) =>
+          category.data?.name.includes('progress')
+        ),
+      [categories]
     )?.length > 0
 
+  const handleItemClick = (e) => {
+    const element = e?.target ?? null
+
+    // Go to center of clicked element for accessibility.
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      })
+    }
+  }
+
   return (
-    <sup ref={ref} className={styles.item} {...props}>
-      <sup
-        className={classNames(styles.overlay, {
-          [styles.active]: inView,
-        })}
-      />
+    <sup
+      role="button"
+      aria-label={`Click to expand project: ${title}`}
+      ref={ref}
+      className={classNames(styles.item, { [styles.active]: inView })}
+      tabIndex="0"
+      onClick={handleItemClick}
+      {...props}>
+      <sup className={styles.overlay} />
       <sup className={styles.title}>
         <RichTextComponent richtext={title} />
       </sup>
@@ -52,7 +72,7 @@ const Item = ({
               <sup className={styles.data}>
                 <sup>
                   <strong>Status:</strong>{' '}
-                  {isInProgress() ? 'In Progress' : 'Complete'}
+                  {isInProgress ? 'In Progress' : 'Complete'}
                 </sup>
                 <sup>
                   {tags?.length > 0 && (
