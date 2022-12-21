@@ -8,11 +8,11 @@ import { hasLink } from 'lib/links'
 const Button = ({ className, link, children }) => {
   return hasLink(link) ? (
     <PrismicLink link={link} className={classNames(styles.button, className)}>
-      <span>{children}</span>
+      <sup>{children}</sup>
     </PrismicLink>
   ) : (
     <div className={classNames(className, styles.button)}>
-      <span>{children}</span>
+      <sup>{children}</sup>
     </div>
   )
 }

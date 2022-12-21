@@ -106,19 +106,19 @@
 
   align-items: center;
   background-color: $bg;
-  box-shadow: -8px 8px 0 $bg-contrast;
+  box-shadow: -6px 6px 0 $bg-contrast;
   color: $color;
   cursor: pointer;
   display: flex;
   font-family: v.$font-headline;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 900;
   height: 100%;
   justify-content: center;
   left: 0;
   line-height: normal;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-top: 0;
   padding: 7px 8px;
   position: relative;
@@ -147,40 +147,40 @@
   &::after {
     background-color: $bg-contrast;
     content: '';
-    height: 12px;
-    left: -5.5px;
+    height: 9px;
+    left: -4px;
     position: absolute;
-    top: 2.5px;
+    top: 2px;
     transform: rotate(45deg);
     transition: none;
-    width: 12px;
+    width: 10px;
     z-index: -1;
   }
 
   &::before {
     background-color: $bg-contrast;
-    bottom: -5.5px;
+    bottom: -3.5px;
     content: '';
-    height: 12px;
+    height: 9px;
     position: absolute;
-    right: 2.5px;
+    right: 1.5px;
     transform: rotate(45deg);
     transition: none;
-    width: 12px;
+    width: 10px;
     z-index: -1;
   }
 
   &:hover {
-    box-shadow: -8px 8px 0 $hover-bg;
+    box-shadow: -6px 6px 0 $hover-bg;
     text-decoration: none;
     transition: box-shadow 0s;
   }
 
   &:active {
     box-shadow: 0 0 0 $hover-bg;
-    left: -8px;
+    left: -6px;
     text-decoration: none;
-    top: 8px;
+    top: 6px;
     transition: box-shadow 0.05s, top 0.05s, left 0.05s;
 
     &::before {
@@ -207,13 +207,16 @@
     left: 0;
     position: absolute;
     top: 0;
-    transition: width 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transform: skewY(-1deg) translateY(2px);
+    transition: width 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955),
+      transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     width: 0%;
     z-index: -1;
   }
 
   &:hover {
     &::before {
+      transform: skewY(-1deg) translateY(0);
       width: 100%;
     }
   }

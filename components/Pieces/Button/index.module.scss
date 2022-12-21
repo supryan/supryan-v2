@@ -2,4 +2,9 @@
 
 .button {
   @include m.button;
+
+  > * {
+    align-items: center;
+    display: flex;
+  }
 }

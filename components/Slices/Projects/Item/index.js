@@ -4,16 +4,20 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useEffect, useMemo, useRef } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import Grid from 'components/Layout/Grid'
 import Button from 'components/Pieces/Button'
 import ArrowIcon from 'public/images/arrow.svg'
 import { hasLink } from 'lib/links'
+import { RichText } from 'prismic-reactjs'
+import Image from 'next/image'
+import Completion from 'components/Pieces/Completion'
 
 const Item = ({
   title,
   description,
   categories,
+  image,
   date,
   link,
   roles,
@@ -22,6 +26,7 @@ const Item = ({
 }) => {
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
+  const [showDetails, setShowDetails] = useState(false)
 
   // Project contains in progress category
   const isInProgress =
@@ -38,7 +43,7 @@ const Item = ({
     const element = e?.target ?? null
 
     // Go to center of clicked element for accessibility.
-    if (element) {
+    if (element && !inView) {
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -50,7 +55,7 @@ const Item = ({
   return (
     <sup
       role="button"
-      aria-label={`Click to expand project: ${title}`}
+      aria-label={`Click to expand project: ${RichText.asText(title)}`}
       ref={ref}
       className={classNames(styles.item, { [styles.active]: inView })}
       tabIndex="0"
@@ -66,27 +71,41 @@ const Item = ({
           [styles.active]: inView,
         })}>
         <Grid className={styles.grid}>
-          <sup className={styles.image}></sup>
+          <sup className={styles.image}>
+            <Completion
+              className={styles.completion}
+              active={inView}
+              status={!isInProgress}
+              onClick={() => setShowDetails(!showDetails)}
+            />
+            {/* <Image src={} layout="fill" /> */}
+          </sup>
           <sup className={styles.meta}>
             <sup className={styles.metaWrap}>
               <sup className={styles.data}>
-                <sup>
-                  <strong>Status:</strong>{' '}
-                  {isInProgress ? 'In Progress' : 'Complete'}
-                </sup>
-                <sup>
-                  {tags?.length > 0 && (
-                    <>
-                      <strong>Affiliates:</strong> {tags.join(', ')}
-                    </>
-                  )}
-                </sup>
-                <sup>
-                  {roles?.length > 0 && (
-                    <>
-                      <strong>Roles:</strong> {roles?.map((data) => data.text)}
-                    </>
-                  )}
+                <sup
+                  className={classNames(styles.dataWrap, {
+                    [styles.active]: showDetails,
+                  })}>
+                  <sup>
+                    <strong>Status:</strong>{' '}
+                    {isInProgress ? 'In Progress' : 'Complete'}
+                  </sup>
+                  <sup>
+                    {tags?.length > 0 && (
+                      <>
+                        <strong>Affiliates:</strong> {tags.join(', ')}
+                      </>
+                    )}
+                  </sup>
+                  <sup>
+                    {roles?.length > 0 && (
+                      <>
+                        <strong>Roles:</strong>{' '}
+                        {roles?.map((data) => data.text)}
+                      </>
+                    )}
+                  </sup>
                 </sup>
               </sup>
               <sup className={styles.categoriesWrap}>

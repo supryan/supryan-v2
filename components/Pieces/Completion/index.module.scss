@@ -1,0 +1,168 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'typography' as t;
+
+.box {
+  height: 25px;
+  pointer-events: none;
+  position: relative;
+  transform: rotateZ(90deg);
+  transition: opacity 0.3s ease;
+  width: 25px;
+  z-index: 2;
+
+  &::before {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAAB9JREFUGFdjZEAF/xmR+P8ZGBgYYQJgDkgSRMA5IAEAgq4EBI6THD4AAAAASUVORK5CYII=')
+      repeat;
+    clip-path: inset(100% 0 0 0);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    .active & {
+      animation: background-move 1s linear forwards infinite,
+        background-clip 0.7s 0.5s ease forwards 1;
+    }
+  }
+}
+
+.cube {
+  float: left;
+  height: 50%;
+  position: relative;
+  transform: scale(1.1) rotateZ(0deg);
+  width: 50%;
+
+  &::before {
+    background-color: v.$white;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: 100% 100%;
+    width: 100%;
+
+    .active & {
+      animation: fold 2.4s linear both 1;
+    }
+  }
+
+  &.cube1 {
+    &::before {
+      animation-delay: 0.7s;
+    }
+  }
+
+  &.cube2 {
+    transform: scale(1.1) rotateZ(90deg);
+
+    &::before {
+      animation-delay: 0.9s;
+    }
+  }
+
+  &.cube3 {
+    transform: scale(1.1) rotateZ(180deg);
+
+    &::before {
+      animation-delay: 1.2s;
+    }
+  }
+
+  &.cube4 {
+    transform: scale(1.1) rotateZ(270deg);
+
+    &::before {
+      animation-delay: 1.4s;
+    }
+  }
+}
+
+.checkmark {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 2;
+}
+
+.cross {
+  visibility: hidden;
+
+  .active & {
+    animation: blink 1s 2s linear forwards 1;
+  }
+}
+
+@keyframes fold {
+  0%,
+  10% {
+    opacity: 0;
+    transform: perspective(140px) rotateX(-180deg);
+  }
+
+  25%,
+  75% {
+    opacity: 1;
+    transform: perspective(140px) rotateX(0deg);
+  }
+
+  90%,
+  100% {
+    opacity: 1;
+    transform: perspective(140px) rotateX(0deg);
+  }
+}
+
+@keyframes background-move {
+  from {
+    background-position: top left;
+  }
+
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes background-clip {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  50% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  75% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes blink {
+  0% {
+    visibility: visible;
+  }
+
+  20% {
+    visibility: hidden;
+  }
+
+  35% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}

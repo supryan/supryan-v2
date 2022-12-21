@@ -8,8 +8,16 @@
   position: relative;
   transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
+  > *:not(.overlay) {
+    pointer-events: none;
+  }
+
   &.active {
     cursor: auto;
+
+    > *:not(.overlay) {
+      pointer-events: auto;
+    }
   }
 
   &:first-child {
@@ -52,6 +60,7 @@
 
 .grid {
   align-items: flex-end;
+  grid-gap: 15px;
   grid-template-columns: 1fr 1fr;
   height: 100%;
 }
@@ -88,10 +97,11 @@
   grid-column: 1 / -1;
   height: 300px;
   margin-bottom: v.$grid-gap;
+  position: relative;
 
   @include m.breakpoint(v.$md) {
     grid-column: span 6;
-    height: 100%;
+    height: calc(100% - #{v.$grid-gap});
   }
 }
 
@@ -117,6 +127,8 @@
     $color: v.$white,
     $hover-bg: v.$black-alt
   );
+
+  margin-right: 5px;
 }
 
 .data {
@@ -129,6 +141,13 @@
   @include m.breakpoint(v.$md) {
     max-width: 200px;
   }
+}
+
+.dataWrap {
+  // max-height: 0px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s ease;
 
   > * {
     font-weight: 300;
@@ -137,6 +156,10 @@
     strong {
       font-weight: 700;
     }
+  }
+
+  &.active {
+    max-height: 300px;
   }
 }
 
@@ -158,4 +181,11 @@
 
 .categoriesWrap {
   margin-bottom: 23px;
+}
+
+.completion {
+  cursor: pointer;
+  position: absolute;
+  right: 7px;
+  top: 7px;
 }

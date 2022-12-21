@@ -3,8 +3,11 @@
 @use 'variables' as v;
 
 .projectList {
-  padding: 50px 0;
   width: 100%;
+
+  @include m.breakpoint(v.$md) {
+    padding: 50px 0;
+  }
 }
 
 .container {
