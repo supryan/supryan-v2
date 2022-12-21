@@ -16,10 +16,11 @@ $bg-contrast: darken(v.$sunny, 45%);
   height: $tagSize;
   justify-content: center;
   letter-spacing: -1px !important;
+  overflow: hidden;
   padding: 10px 25px 10px $tagSize;
   position: sticky;
   top: 50vh;
-  transform: skewY(-5deg) translateY(5px);
+  transform: skewY(-5deg) translateY(5px) translateZ(0);
   will-change: transform;
   z-index: -1;
 

@@ -42,8 +42,8 @@
   grid-gap: 0 !important;
 
   @include m.breakpoint(v.$md) {
-    height: 40vh;
-    min-height: 450px;
+    height: 30vh;
+    min-height: 350px;
   }
 }
 
@@ -53,6 +53,7 @@
 
   @include m.breakpoint(v.$md) {
     grid-column: 1 / span 6;
+    margin-top: 70px;
     padding: 0;
   }
 }

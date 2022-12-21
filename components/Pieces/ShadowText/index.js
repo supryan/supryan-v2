@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styles from './index.module.scss'
 import classNames from 'classnames'
 import { motion, useAnimation } from 'framer-motion'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { Textfit } from 'react-textfit'
 import { shadowText } from 'lib/animations'
 
@@ -11,16 +11,23 @@ const ShadowText = ({
   loop = false,
   animate = true,
   className,
+  startColor,
+  endColor,
+  reverse = false,
   ...props
 }) => {
   const text = [...children]
   const controls = useAnimation()
 
   useEffect(() => {
-    if (animate) {
+    if (animate && !reverse) {
       controls.start('visible')
     }
-  }, [animate, controls])
+
+    if (reverse) {
+      controls.start(animate ? 'visible' : 'hidden')
+    }
+  }, [animate, reverse, controls])
 
   return (
     <Textfit
@@ -32,7 +39,7 @@ const ShadowText = ({
           key={`shadow-character-${index}`}
           initial="hidden"
           animate={controls}
-          variants={shadowText}
+          variants={shadowText({ startColor, endColor })}
           transition={{
             duration: text?.length * 0.25,
             delay: index * 0.2,

@@ -58,7 +58,7 @@ const Item = ({
       aria-label={`Click to expand project: ${RichText.asText(title)}`}
       ref={ref}
       className={classNames(styles.item, { [styles.active]: inView })}
-      tabIndex="0"
+      tabIndex={inView ? -1 : 0}
       onClick={handleItemClick}
       {...props}>
       <sup className={styles.overlay} />

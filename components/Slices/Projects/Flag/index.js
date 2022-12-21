@@ -15,7 +15,7 @@ const Flag = ({ scrollRef }) => {
       const speed = diff * 0.05
 
       if (flagRef?.current) {
-        flagRef.current.style.transform = `skewY(${speed}deg) translateY(5px)`
+        flagRef.current.style.transform = `skewY(${speed}deg) translateY(5px) translateZ(0)`
       }
 
       scrollRef.current.scrollPosition = newPos

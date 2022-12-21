@@ -6,7 +6,7 @@ import styles from './index.module.scss'
 export default function Footer({ footer }) {
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
+      <sup className={styles.container}>
         <Grid>
           <sup className={styles.brand}>
             <Logo className={styles.logo} />
@@ -17,7 +17,7 @@ export default function Footer({ footer }) {
             </sup>
           </sup>
         </Grid>
-      </div>
+      </sup>
     </footer>
   )
 }
