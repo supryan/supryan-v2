@@ -111,6 +111,28 @@
   }
 }
 
+.tooltip {
+  background-color: v.$white;
+  margin-left: -10px;
+  margin-top: -1px;
+  max-height: 200px;
+  min-width: 175px;
+  opacity: 0;
+  overflow: auto;
+  padding: 4px 10px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translateX(-95%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-100%);
+  }
+}
+
 @keyframes fold {
   0%,
   10% {

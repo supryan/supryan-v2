@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import styles from './index.module.scss'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useClickOutside } from 'lib/hooks'
 
 const ButtonIcon = ({
   active,
@@ -10,15 +11,29 @@ const ButtonIcon = ({
   delay,
   rotation = 90,
   className,
+  tooltip,
+  onClick,
   ...props
 }) => {
+  const ref = useRef()
   const [visible, setVisible] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
+
+  useClickOutside(ref, () => {
+    setShowTooltip(false)
+  })
 
   useEffect(() => {
     setTimeout(() => {
       setVisible(active)
     }, delay ?? 0)
   }, [delay, active])
+
+  useEffect(() => {
+    if (!visible) {
+      setShowTooltip(false)
+    }
+  }, [visible])
 
   const renderSvgType = useMemo(() => {
     switch (type) {
@@ -79,13 +94,27 @@ const ButtonIcon = ({
     }
   }, [visible, type])
 
+  const handleClick = (e) => {
+    e.preventDefault()
+
+    if (tooltip && tooltip !== '') {
+      setShowTooltip(!showTooltip)
+    }
+
+    if (onClick) {
+      onClick(e)
+    }
+  }
+
   return (
     visible && (
       <motion.sup
+        ref={ref}
         role="button"
         className={classNames(styles.buttonIcon, className, {
           [styles.active]: visible,
         })}
+        onClick={handleClick}
         {...props}>
         <motion.sup
           className={styles.box}
@@ -105,6 +134,14 @@ const ButtonIcon = ({
           viewBox="0 0 512 512">
           {renderSvgType}
         </motion.svg>
+        {tooltip && tooltip !== '' && (
+          <sup
+            className={classNames(styles.tooltip, {
+              [styles.active]: showTooltip,
+            })}>
+            {tooltip}
+          </sup>
+        )}
       </motion.sup>
     )
   )
@@ -118,4 +155,5 @@ ButtonIcon.propTypes = {
   type: PropTypes.oneOf(['checkmark', 'cross', 'lines']),
   delay: PropTypes.number,
   rotation: PropTypes.number,
+  tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 }

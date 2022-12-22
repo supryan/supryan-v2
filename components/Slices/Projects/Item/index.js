@@ -6,12 +6,10 @@ import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
 import { useMemo, useRef, useState } from 'react'
 import Grid from 'components/Layout/Grid'
-import Button from 'components/Pieces/Button'
-import ArrowIcon from 'public/images/arrow.svg'
-import { hasLink } from 'lib/links'
 import { RichText } from 'prismic-reactjs'
 import Image from 'next/image'
 import ButtonIcon from 'components/Pieces/ButtonIcon'
+import { capitalize } from 'lodash'
 
 const Item = ({
   title,
@@ -26,7 +24,6 @@ const Item = ({
 }) => {
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
-  const [showDetails, setShowDetails] = useState(false)
 
   // Project contains in progress category
   const isInProgress =
@@ -76,16 +73,49 @@ const Item = ({
               <ButtonIcon
                 className={styles.buttonIcon}
                 active={inView}
+                tooltip={
+                  <sup className={styles.meta}>
+                    <strong>Status</strong>{' '}
+                    {isInProgress ? 'In Progress' : 'Complete'}
+                  </sup>
+                }
                 type={isInProgress ? 'cross' : 'checkmark'}
-                onClick={() => setShowDetails(!showDetails)}
               />
               <ButtonIcon
                 className={styles.buttonIcon}
                 active={inView}
                 type="lines"
+                tooltip={
+                  <sup className={styles.meta}>
+                    {categories?.length > 0 && (
+                      <sup className={styles.categories}>
+                        <strong>Categories</strong>{' '}
+                        {categories
+                          ?.map(({ category }) =>
+                            capitalize(category?.data?.name)
+                          )
+                          ?.join(', ')}
+                      </sup>
+                    )}
+                    <sup>
+                      {tags?.length > 0 && (
+                        <>
+                          <strong>Affiliates</strong> {tags.join(', ')}
+                        </>
+                      )}
+                    </sup>
+                    <sup>
+                      {roles?.length > 0 && (
+                        <>
+                          <strong>Roles</strong>{' '}
+                          {roles?.map((data) => data.text)}
+                        </>
+                      )}
+                    </sup>
+                  </sup>
+                }
                 rotation={180}
                 // delay={500}
-                onClick={() => setShowDetails(!showDetails)}
               />
             </sup>
             {/* <Image src={} layout="fill" /> */}
