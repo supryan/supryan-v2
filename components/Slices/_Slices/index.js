@@ -8,7 +8,7 @@ const Slices = ({ slices, projects }) => {
     <>
       {slices?.map((slice, i) => {
         let Component
-        const { slice_type: type, primary, items } = slice
+        const { slice_type: type, primary } = slice
         switch (type) {
           case 'intro': {
             Component = <Intro {...primary} />

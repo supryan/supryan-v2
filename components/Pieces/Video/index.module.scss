@@ -1,3 +1,15 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 @use 'typography' as t;
+
+.video {
+  cursor: url('/images/icon-pause.png'), auto;
+
+  &.muted {
+    cursor: url('/images/icon-rewind.png'), auto;
+  }
+
+  &.paused {
+    cursor: url('/images/icon-play.png'), auto;
+  }
+}

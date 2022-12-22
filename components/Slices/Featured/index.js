@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
 import { featured } from 'lib/animations'
+import Video from 'components/Pieces/Video'
 
 const Featured = ({ prop }) => {
   return (
@@ -19,13 +20,7 @@ const Featured = ({ prop }) => {
           }}
           className={styles.wrapper}>
           <sup className={styles.header}>The Latest</sup>
-          <video
-            src="https://supryan.cdn.prismic.io/supryan%2F0b14276a-eb2f-4432-bda1-9443962f25d0_ryan%27s+reel+%282015%29+%281%29.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <Video src="https://supryan.cdn.prismic.io/supryan%2F0b14276a-eb2f-4432-bda1-9443962f25d0_ryan%27s+reel+%282015%29+%281%29.mp4" />
         </motion.sup>
       </sup>
     </sup>

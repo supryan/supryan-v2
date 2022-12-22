@@ -163,16 +163,6 @@
   }
 }
 
-.cta {
-  align-items: center;
-  display: inline-flex;
-  height: auto !important;
-
-  svg {
-    width: 18px;
-  }
-}
-
 .metaWrap {
   display: flex;
   flex-direction: column;
@@ -183,9 +173,25 @@
   margin-bottom: 23px;
 }
 
-.completion {
+.buttonIcon {
   cursor: pointer;
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - #{v.$grid-gap});
   position: absolute;
   right: 7px;
   top: 7px;
+}
+
+.cta {
+  align-self: flex-end;
+  bottom: 0;
+  display: flex;
+  margin-bottom: 0;
+  position: absolute;
 }

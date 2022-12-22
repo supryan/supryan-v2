@@ -11,7 +11,7 @@ import ArrowIcon from 'public/images/arrow.svg'
 import { hasLink } from 'lib/links'
 import { RichText } from 'prismic-reactjs'
 import Image from 'next/image'
-import Completion from 'components/Pieces/Completion'
+import ButtonIcon from 'components/Pieces/ButtonIcon'
 
 const Item = ({
   title,
@@ -72,59 +72,23 @@ const Item = ({
         })}>
         <Grid className={styles.grid}>
           <sup className={styles.image}>
-            <Completion
-              className={styles.completion}
-              active={inView}
-              status={!isInProgress}
-              onClick={() => setShowDetails(!showDetails)}
-            />
-            {/* <Image src={} layout="fill" /> */}
-          </sup>
-          <sup className={styles.meta}>
-            <sup className={styles.metaWrap}>
-              <sup className={styles.data}>
-                <sup
-                  className={classNames(styles.dataWrap, {
-                    [styles.active]: showDetails,
-                  })}>
-                  <sup>
-                    <strong>Status:</strong>{' '}
-                    {isInProgress ? 'In Progress' : 'Complete'}
-                  </sup>
-                  <sup>
-                    {tags?.length > 0 && (
-                      <>
-                        <strong>Affiliates:</strong> {tags.join(', ')}
-                      </>
-                    )}
-                  </sup>
-                  <sup>
-                    {roles?.length > 0 && (
-                      <>
-                        <strong>Roles:</strong>{' '}
-                        {roles?.map((data) => data.text)}
-                      </>
-                    )}
-                  </sup>
-                </sup>
-              </sup>
-              <sup className={styles.categoriesWrap}>
-                <sup className={styles.categories}>
-                  {categories?.map(({ category }, i) => {
-                    return (
-                      <button key={`category-${i}`} className={styles.category}>
-                        {category?.data?.name}
-                      </button>
-                    )
-                  })}
-                </sup>
-                {hasLink(link) && (
-                  <Button link={link} className={styles.cta}>
-                    Check it out <ArrowIcon />
-                  </Button>
-                )}
-              </sup>
+            <sup className={styles.buttons}>
+              <ButtonIcon
+                className={styles.buttonIcon}
+                active={inView}
+                type={isInProgress ? 'cross' : 'checkmark'}
+                onClick={() => setShowDetails(!showDetails)}
+              />
+              <ButtonIcon
+                className={styles.buttonIcon}
+                active={inView}
+                type="lines"
+                rotation={180}
+                // delay={500}
+                onClick={() => setShowDetails(!showDetails)}
+              />
             </sup>
+            {/* <Image src={} layout="fill" /> */}
           </sup>
         </Grid>
       </sup>

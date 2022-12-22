@@ -13,10 +13,12 @@ import prismicRichTextShape from 'shapes/prismic/richtext'
 import CameraIcon from 'public/images/camera.svg'
 import DocumentIcon from 'public/images/document.svg'
 import ArrowIcon from 'public/images/arrow.svg'
+import classNames from 'classnames'
 
 const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
   const [complete, setComplete] = useState(false)
+  const [hideLayer, setHideLayer] = useState(false)
 
   useScrollLock(scrollLock)
 
@@ -35,7 +37,14 @@ const Intro = ({ title, description, links }) => {
             animate="visible"
             variants={animation}
             transition={{ duration: 1 + index * 0.3, delay: 1.5 }}
-            className={styles.background}
+            className={classNames(styles.background, {
+              [styles.hide]: index === 1 && hideLayer,
+            })}
+            onAnimationComplete={() => {
+              if (index === 1) {
+                setHideLayer(true)
+              }
+            }}
           />
         ))}
         <motion.sup

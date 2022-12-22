@@ -23,17 +23,6 @@
     display: flex;
     grid-column: 1 / span 1;
   }
-
-  &::after {
-    background-color: v.$black;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    width: 1px;
-    z-index: 1;
-  }
 }
 
 .grid {

@@ -5,6 +5,7 @@ import Grid from 'components/Layout/Grid'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Flag from '../Flag'
 import ShadowText from 'components/Pieces/ShadowText'
+import MarkerLine from 'public/images/line.svg'
 
 const Projects = ({ items }) => {
   const ref = useRef()
@@ -14,7 +15,7 @@ const Projects = ({ items }) => {
   const getScrollPercentage = useCallback(() => {
     const scrollPercentage =
       (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-    const visibleRange = scrollPercentage >= 25 && scrollPercentage <= 90
+    const visibleRange = scrollPercentage >= 20 && scrollPercentage <= 90
 
     setShowBranding(visibleRange)
   }, [])
@@ -38,6 +39,7 @@ const Projects = ({ items }) => {
         <Grid className={styles.grid}>
           <sup className={styles.marker}>
             <Flag scrollRef={ref} />
+            <MarkerLine />
           </sup>
           <sup className={styles.projects}>
             {items?.map((item, index) => (

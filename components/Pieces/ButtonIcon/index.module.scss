@@ -2,6 +2,16 @@
 @use 'mixins' as m;
 @use 'typography' as t;
 
+.buttonIcon {
+  &:hover {
+    .cube {
+      &::before {
+        background-color: v.$sunny;
+      }
+    }
+  }
+}
+
 .box {
   height: 25px;
   pointer-events: none;
