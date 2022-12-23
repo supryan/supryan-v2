@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import Flag from '../Flag'
 import ShadowText from 'components/Pieces/ShadowText'
 import MarkerLine from 'public/images/line.svg'
+import classNames from 'classnames'
 
 const Projects = ({ items }) => {
   const ref = useRef()
@@ -30,7 +31,13 @@ const Projects = ({ items }) => {
 
   return (
     <sup ref={ref} className={styles.projectList}>
-      <sup className={styles.branding}>
+      <sup
+        role="button"
+        aria-label="Scroll back top top"
+        className={classNames(styles.branding, {
+          [styles.active]: showBranding,
+        })}
+        onClick={() => window.scrollTo(0, 0)}>
         <ShadowText startColor="#ffffff" animate={showBranding} reverse>
           RG
         </ShadowText>

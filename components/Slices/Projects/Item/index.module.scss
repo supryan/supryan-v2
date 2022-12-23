@@ -88,7 +88,7 @@
   }
 }
 
-.image {
+.media {
   background-color: #eee;
   border-radius: 5px;
   grid-column: 1 / -1;
@@ -100,12 +100,29 @@
     grid-column: span 6;
     height: calc(100% - #{v.$grid-gap});
   }
+
+  video,
+  img {
+    filter: grayscale(100%);
+    opacity: 0.2;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  &:hover {
+    video,
+    img {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+  }
 }
 
 .buttonIcon {
   cursor: pointer;
   display: inline-flex;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 999;
 }
 
 .buttons {
@@ -128,8 +145,7 @@
 .meta {
   @include t.body-mono;
 
-  font-size: 12px !important;
-  line-height: 1;
+  font-size: 10px !important;
 
   > * {
     margin-bottom: 10px;

@@ -14,6 +14,7 @@ import CameraIcon from 'public/images/camera.svg'
 import DocumentIcon from 'public/images/document.svg'
 import ArrowIcon from 'public/images/arrow.svg'
 import classNames from 'classnames'
+import config from 'constants/config'
 
 const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
@@ -28,7 +29,7 @@ const Intro = ({ title, description, links }) => {
 
   return (
     <>
-      <Loader timeout={1000} />
+      <Loader timeout={config.loaderTimeout} />
       <sup className={styles.intro}>
         {intro?.map(({ animation }, index) => (
           <motion.sup
@@ -36,7 +37,10 @@ const Intro = ({ title, description, links }) => {
             initial="hidden"
             animate="visible"
             variants={animation}
-            transition={{ duration: 1 + index * 0.3, delay: 1.5 }}
+            transition={{
+              duration: 1 + index * 0.3,
+              delay: config.loaderTimeout + 0.5,
+            }}
             className={classNames(styles.background, {
               [styles.hide]: index === 1 && hideLayer,
             })}
@@ -50,7 +54,7 @@ const Intro = ({ title, description, links }) => {
         <motion.sup
           initial={{ visibility: 'hidden' }}
           animate={{ visibility: 'visible' }}
-          transition={{ delay: 2.11 }}
+          transition={{ delay: config.loaderTimeout + 1.25 }}
           onAnimationComplete={() => {
             setScrollLock(false)
             setComplete(true)

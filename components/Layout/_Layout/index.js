@@ -7,6 +7,7 @@ import headerShape from 'components/Layout/Header/shape'
 import metaShape from 'components/Layout/Meta/shape'
 import Intro from '../Intro'
 import styles from './index.module.scss'
+import config from 'constants/config'
 
 const Layout = ({ metadata, globals, header, preview, children }) => {
   return (
@@ -23,7 +24,11 @@ const Layout = ({ metadata, globals, header, preview, children }) => {
           <motion.sup
             initial={{ y: '100vh' }}
             animate={{ y: 0 }}
-            transition={{ delay: 1.25, duration: 1 }}
+            transition={{
+              delay: config.loaderTimeout + 0.45,
+              duration: 1,
+              ease: 'easeInOut',
+            }}
             className={styles.inner}>
             {children}
           </motion.sup>

@@ -17,7 +17,7 @@ const Loader = ({ loading, timeout = 0, overlay = true }) => {
 
       loaderRef.current.timeout = setTimeout(() => {
         setActive(!active)
-      }, timeout)
+      }, timeout * 1000)
     } else {
       setActive(loading)
     }

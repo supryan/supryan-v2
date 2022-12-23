@@ -54,10 +54,16 @@
   height: 0;
   left: 0;
   margin-left: 30px;
+  pointer-events: none;
   position: sticky;
   top: 30px;
   transform: scale(0.2);
   transform-origin: top left;
   transition: opacity 0.3s ease;
   z-index: 999;
+
+  &.active {
+    cursor: pointer;
+    pointer-events: auto;
+  }
 }

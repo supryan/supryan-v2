@@ -3,7 +3,7 @@ import Featured from 'components/Slices/Featured'
 import Intro from 'components/Layout/Intro'
 import Projects from 'components/Slices/Projects/_Projects'
 
-const Slices = ({ slices, projects }) => {
+const Slices = ({ slices, projects, globals }) => {
   return (
     <>
       {slices?.map((slice, i) => {
@@ -15,6 +15,8 @@ const Slices = ({ slices, projects }) => {
             break
           }
           case 'featured': {
+            const primary = {}
+            primary.video = globals?.video_reel
             Component = <Featured {...primary} />
             break
           }

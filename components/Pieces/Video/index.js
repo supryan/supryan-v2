@@ -4,14 +4,14 @@ import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-const Video = ({ src, poster, className, ...props }) => {
+const Video = ({ src, poster, controls = true, className, ...props }) => {
   const videoRef = useRef()
   const [muted, setMuted] = useState(true)
   const [playing, setPlaying] = useState(true)
   const [inViewRef, inView] = useInView()
 
   const handleVideoClick = () => {
-    if (videoRef?.current) {
+    if (videoRef?.current && controls) {
       if (muted) {
         setMuted(false)
         videoRef.current.currentTime = 0
@@ -39,7 +39,7 @@ const Video = ({ src, poster, className, ...props }) => {
   }, [inView, playing])
 
   return (
-    <div
+    <sup
       ref={inViewRef}
       role="button"
       aria-label="Play video from the beginning"
@@ -47,6 +47,7 @@ const Video = ({ src, poster, className, ...props }) => {
       className={classNames(styles.video, className, {
         [styles.muted]: muted,
         [styles.paused]: !playing,
+        [styles.noControls]: !controls,
       })}>
       <video
         ref={videoRef}
@@ -54,13 +55,18 @@ const Video = ({ src, poster, className, ...props }) => {
         muted={muted}
         playsInline
         loop
+        preload="auto"
         src={src}
         {...props}
       />
-    </div>
+    </sup>
   )
 }
 
 export default Video
 
-Video.propTypes = { src: PropTypes.string, className: PropTypes.string }
+Video.propTypes = {
+  src: PropTypes.string,
+  className: PropTypes.string,
+  controls: PropTypes.bool,
+}

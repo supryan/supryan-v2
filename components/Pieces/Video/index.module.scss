@@ -4,6 +4,7 @@
 
 .video {
   cursor: url('/images/icon-pause.png'), auto;
+  position: unset;
 
   &.muted {
     cursor: url('/images/icon-rewind.png'), auto;
@@ -11,5 +12,19 @@
 
   &.paused {
     cursor: url('/images/icon-play.png'), auto;
+  }
+
+  &.noControls {
+    cursor: auto;
+  }
+
+  video {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 }

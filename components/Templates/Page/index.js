@@ -23,7 +23,11 @@ const Page = ({ page, projects, header, globals, preview }) => {
       header={header}
       globals={globals}>
       {page?.data?.body && (
-        <Slices slices={page?.data?.body} projects={projects} />
+        <Slices
+          slices={page?.data?.body}
+          projects={projects}
+          globals={globals}
+        />
       )}
     </Layout>
   )

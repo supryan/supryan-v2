@@ -10,12 +10,16 @@ import { RichText } from 'prismic-reactjs'
 import Image from 'next/image'
 import ButtonIcon from 'components/Pieces/ButtonIcon'
 import { capitalize } from 'lodash'
+import Video from 'components/Pieces/Video'
+import prismicVideoShape from 'shapes/prismic/video'
+import prismicImageShape from 'shapes/prismic/image'
 
 const Item = ({
   title,
   description,
   categories,
   image,
+  video,
   date,
   link,
   roles,
@@ -24,6 +28,8 @@ const Item = ({
 }) => {
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
+
+  console.log(video)
 
   // Project contains in progress category
   const isInProgress =
@@ -68,7 +74,7 @@ const Item = ({
           [styles.active]: inView,
         })}>
         <Grid className={styles.grid}>
-          <sup className={styles.image}>
+          <sup className={styles.media}>
             <sup className={styles.buttons}>
               <ButtonIcon
                 className={styles.buttonIcon}
@@ -118,7 +124,22 @@ const Item = ({
                 // delay={500}
               />
             </sup>
-            {/* <Image src={} layout="fill" /> */}
+            {video?.url && inView ? (
+              <Video
+                src={video?.url}
+                className={styles.video}
+                controls={false}
+              />
+            ) : (
+              image?.url && (
+                <Image
+                  src={image?.url}
+                  alt={image?.alt}
+                  layout="fill"
+                  className={styles.image}
+                />
+              )
+            )}
           </sup>
         </Grid>
       </sup>
@@ -136,4 +157,6 @@ Item.propTypes = {
   description: prismicRichTextShape,
   categories: PropTypes.array,
   date: PropTypes.string,
+  video: prismicVideoShape,
+  image: prismicImageShape,
 }
