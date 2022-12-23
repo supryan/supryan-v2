@@ -72,7 +72,13 @@ const Item = ({
           [styles.active]: inView,
         })}>
         <Grid className={styles.grid}>
-          <sup className={styles.media}>
+          <a
+            role="button"
+            aria-label="Click to go to external project"
+            href={link?.url}
+            target={link?.target}
+            className={styles.media}
+            rel="noreferrer">
             <sup className={styles.buttons}>
               <ButtonIcon
                 className={styles.buttonIcon}
@@ -138,7 +144,7 @@ const Item = ({
                 />
               )
             )}
-          </sup>
+          </a>
         </Grid>
       </sup>
       <sup className={styles.description}>
