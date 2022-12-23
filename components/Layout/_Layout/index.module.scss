@@ -30,9 +30,13 @@
 }
 
 .inner {
-  padding-top: 35vh;
+  padding-top: 32vh;
   pointer-events: none;
   z-index: 3;
+
+  @include m.breakpoint(v.$md) {
+    padding-top: 35vh;
+  }
 
   > * {
     pointer-events: auto;

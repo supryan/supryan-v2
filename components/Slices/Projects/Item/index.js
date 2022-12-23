@@ -29,8 +29,6 @@ const Item = ({
   const { ref, inView } = useScrollSpy({ date })
   const detailsRef = useRef(null)
 
-  console.log(video)
-
   // Project contains in progress category
   const isInProgress =
     useMemo(
