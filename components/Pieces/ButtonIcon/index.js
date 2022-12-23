@@ -76,9 +76,9 @@ const ButtonIcon = ({
                   y1={yValue}
                   y2={yValue}
                   strokeDasharray={512}
-                  strokeDashoffset={-512}
-                  initial={{ strokeDashoffset: -512 }}
-                  animate={{ strokeDashoffset: visible ? 0 : -512 }}
+                  strokeDashoffset={512}
+                  initial={{ strokeDashoffset: 512 }}
+                  animate={{ strokeDashoffset: visible ? 0 : 512 }}
                   transition={{
                     duration: 0.3,
                     delay: 2 + i * 0.25,

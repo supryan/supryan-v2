@@ -12,7 +12,7 @@ const Flag = ({ scrollRef }) => {
       const newPos = window.pageYOffset
       const diff =
         newPos - (scrollRef.current?.scrollPosition ?? window.pageYOffset)
-      const speed = diff * 0.05
+      const speed = diff * 0.08
 
       if (flagRef?.current) {
         flagRef.current.style.transform = `skewY(${speed}deg) translateY(5px) translateZ(0)`

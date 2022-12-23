@@ -76,6 +76,7 @@
 .details {
   background-color: v.$white;
   height: 0;
+  margin-bottom: v.$grid-gap;
   overflow: hidden;
   position: relative;
   transform: translateZ(0);
@@ -84,7 +85,11 @@
   z-index: 3;
 
   &.active {
-    height: 300px;
+    height: 200px;
+
+    @include m.breakpoint(v.$md) {
+      height: 300px;
+    }
   }
 }
 
@@ -94,14 +99,20 @@
   cursor: pointer;
   display: block;
   grid-column: 1 / -1;
-  height: calc(300px - #{v.$grid-gap});
-  margin-bottom: v.$grid-gap;
+  height: 100%;
   overflow: hidden;
   position: relative;
 
   @include m.breakpoint(v.$md) {
     grid-column: span 6;
-    height: calc(100% - #{v.$grid-gap});
+
+    &:hover {
+      video,
+      img {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+    }
   }
 
   video,
@@ -110,13 +121,12 @@
     opacity: 0.2;
     pointer-events: none;
     transition: filter 0.3s ease, opacity 0.3s ease;
-  }
 
-  &:hover {
-    video,
-    img {
-      filter: grayscale(0);
-      opacity: 1;
+    @include m.breakpoint-max(v.$md) {
+      .active & {
+        filter: grayscale(0);
+        opacity: 1;
+      }
     }
   }
 }

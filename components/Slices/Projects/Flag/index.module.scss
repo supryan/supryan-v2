@@ -1,6 +1,7 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 @use 'typography' as t;
+@use 'sass:math';
 
 /* stylelint-disable-next-line scss/dollar-variable-pattern */
 $tagSize: 30px;
@@ -24,9 +25,9 @@ $bg-contrast: darken(v.$sunny, 45%);
   z-index: v.$z-2;
 
   &::after {
-    border-bottom: $tagSize / 2 solid transparent;
-    border-left: $tagSize / 2 solid v.$sunny;
-    border-top: $tagSize / 2 solid transparent;
+    border-bottom: math.div($tagSize, 2) solid transparent;
+    border-left: math.div($tagSize, 2) solid v.$sunny;
+    border-top: math.div($tagSize, 2) solid transparent;
     content: '';
     height: 0;
     position: absolute;

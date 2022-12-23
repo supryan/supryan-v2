@@ -6,6 +6,12 @@
   }
 }
 
+@mixin breakpoint-max($minimum) {
+  @media (max-width: $minimum) {
+    @content;
+  }
+}
+
 @mixin font(
   $font-family: v.$font-family,
   $font-weight: normal,
