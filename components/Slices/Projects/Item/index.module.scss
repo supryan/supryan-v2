@@ -92,7 +92,7 @@
   background-color: #eee;
   border-radius: 5px;
   grid-column: 1 / -1;
-  height: 300px;
+  height: calc(300px - #{v.$grid-gap});
   margin-bottom: v.$grid-gap;
   position: relative;
 
