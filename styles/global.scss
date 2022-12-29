@@ -115,7 +115,7 @@ svg {
 // Reset sup elements to match div instead
 sup {
   display: block;
-  font-size: 100%;
-  line-height: 1;
-  top: auto;
+  font-size: unset;
+  line-height: unset;
+  top: unset;
 }

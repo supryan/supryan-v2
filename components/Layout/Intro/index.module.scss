@@ -1,6 +1,7 @@
 @use 'typography' as t;
 @use 'mixins' as m;
 @use 'variables' as v;
+@use 'animations' as a;
 
 .intro {
   position: relative;
@@ -53,7 +54,7 @@
 
 .sup {
   grid-column: 1 / -1;
-  padding: v.$slice-pad-md v.$slice-pad v.$slice-pad;
+  padding: 60px v.$slice-pad 30px;
 
   @include m.breakpoint(v.$md) {
     grid-column: 1 / span 6;
@@ -113,29 +114,12 @@
 }
 
 .cursor {
-  animation: blink 1.1s linear infinite;
+  @include a.animate($animation: blink, $duration: 1.1s);
+
   background-color: v.$black;
   height: 25px;
   margin-left: 10px;
   width: 15px;
-
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 1;
-    }
-
-    50.01% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
 
   @include m.breakpoint(v.$md) {
     height: 30px;

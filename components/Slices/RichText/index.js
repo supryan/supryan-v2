@@ -4,9 +4,9 @@ import RichTextField from 'components/Pieces/RichTextField'
 
 const RichTextComponent = ({ richtext }) => {
   return (
-    <div className={styles.container}>
+    <sup className={styles.container}>
       <RichTextField text={richtext} />
-    </div>
+    </sup>
   )
 }
 

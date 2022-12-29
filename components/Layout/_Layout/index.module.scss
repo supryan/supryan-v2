@@ -1,6 +1,7 @@
 @use 'typography' as t;
 @use 'mixins' as m;
 @use 'variables' as v;
+@use 'animations' as a;
 
 .wrapper {
   min-height: 100vh;
@@ -30,15 +31,33 @@
 }
 
 .inner {
+  padding-bottom: 60vw;
   padding-top: 32vh;
   pointer-events: none;
   z-index: 3;
 
   @include m.breakpoint(v.$md) {
+    padding-bottom: 0;
     padding-top: 35vh;
   }
 
   > * {
     pointer-events: auto;
+  }
+}
+
+.deuces {
+  bottom: -75px;
+  left: 0;
+  margin: 0 auto;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  transform: rotate(5deg);
+  width: 12vw;
+  z-index: 1;
+
+  path {
+    @include a.animate($animation: dotted-move, $offset: 11);
   }
 }

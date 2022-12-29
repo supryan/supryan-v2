@@ -1,6 +1,7 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 @use 'typography' as t;
+@use 'animations' as a;
 
 .buttonIcon {
   &:hover {
@@ -60,7 +61,12 @@
     width: 100%;
 
     .active & {
-      animation: fold 2.4s linear both 1;
+      @include a.animate(
+        $animation: fold,
+        $duration: 2.4s,
+        $timing: both,
+        $iteration: 1
+      );
     }
   }
 
@@ -107,7 +113,7 @@
   visibility: hidden;
 
   .active & {
-    animation: blink 1s 2s linear forwards 1;
+    @include a.animate($animation: blink, $delay: 2s, $iteration: 1);
   }
 }
 
@@ -130,71 +136,5 @@
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-100%);
-  }
-}
-
-@keyframes fold {
-  0%,
-  10% {
-    opacity: 0;
-    transform: perspective(140px) rotateX(-180deg);
-  }
-
-  25%,
-  75% {
-    opacity: 1;
-    transform: perspective(140px) rotateX(0deg);
-  }
-
-  90%,
-  100% {
-    opacity: 1;
-    transform: perspective(140px) rotateX(0deg);
-  }
-}
-
-@keyframes background-move {
-  from {
-    background-position: top left;
-  }
-
-  to {
-    background-position: center center;
-  }
-}
-
-@keyframes background-clip {
-  0% {
-    clip-path: inset(100% 0 0 0);
-  }
-
-  50% {
-    clip-path: inset(0 0 0 0);
-  }
-
-  75% {
-    clip-path: inset(0 0 0 0);
-  }
-
-  100% {
-    clip-path: inset(0 0 100% 0);
-  }
-}
-
-@keyframes blink {
-  0% {
-    visibility: visible;
-  }
-
-  20% {
-    visibility: hidden;
-  }
-
-  35% {
-    visibility: hidden;
-  }
-
-  100% {
-    visibility: visible;
   }
 }

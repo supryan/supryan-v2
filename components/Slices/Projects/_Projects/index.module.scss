@@ -41,11 +41,10 @@
 
 .projects {
   grid-column: 1 / -1;
-  padding-bottom: 50px;
 
   @include m.breakpoint(v.$md) {
     grid-column: 2 / span 11;
-    padding-bottom: 100px;
+    padding-bottom: 10vmax;
     padding-left: 20px;
   }
 }

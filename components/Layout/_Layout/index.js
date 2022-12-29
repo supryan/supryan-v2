@@ -8,6 +8,7 @@ import metaShape from 'components/Layout/Meta/shape'
 import Intro from '../Intro'
 import styles from './index.module.scss'
 import config from 'constants/config'
+import Deuces from 'public/images/deuces.svg'
 
 const Layout = ({ metadata, globals, header, preview, children }) => {
   return (
@@ -32,6 +33,7 @@ const Layout = ({ metadata, globals, header, preview, children }) => {
             className={styles.inner}>
             {children}
           </motion.sup>
+          <Deuces className={styles.deuces} />
         </main>
       </motion.sup>
       <Footer footer={globals} />

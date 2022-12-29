@@ -17,6 +17,7 @@ const Slices = ({ slices, projects, globals }) => {
           case 'featured': {
             const primary = {}
             primary.video = globals?.video_reel
+            primary.cta = globals?.cta
             Component = <Featured {...primary} />
             break
           }

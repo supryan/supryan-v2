@@ -4,7 +4,7 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Grid from 'components/Layout/Grid'
 import { RichText } from 'prismic-reactjs'
 import Image from 'next/image'
@@ -26,7 +26,7 @@ const Item = ({
   tags,
   ...props
 }) => {
-  const { ref, inView } = useScrollSpy({ date })
+  const { ref, inView, element } = useScrollSpy({ date })
   const detailsRef = useRef(null)
 
   // Project contains in progress category
@@ -40,18 +40,31 @@ const Item = ({
       [categories]
     )?.length > 0
 
-  const handleItemClick = (e) => {
-    const element = e?.target ?? null
-
-    // Go to center of clicked element for accessibility.
-    if (element && !inView) {
-      element.scrollIntoView({
+  // Go to center of clicked element for accessibility.
+  const scrollToItem = useCallback(
+    (
+      el,
+      options = {
         behavior: 'smooth',
         block: 'center',
         inline: 'center',
-      })
-    }
-  }
+      }
+    ) => {
+      const elem = el ?? element?.current
+      if (elem) {
+        elem.scrollIntoView(options)
+      }
+    },
+    [element]
+  )
+
+  // useEffect(() => {
+  //   if (inView) {
+  //     setTimeout(() => {
+  //       scrollToItem()
+  //     }, 700)
+  //   }
+  // }, [inView, scrollToItem])
 
   return (
     <sup
@@ -60,7 +73,7 @@ const Item = ({
       ref={ref}
       className={classNames(styles.item, { [styles.active]: inView })}
       tabIndex={inView ? -1 : 0}
-      onClick={handleItemClick}
+      onClick={(e) => scrollToItem(e?.target)}
       {...props}>
       <sup className={styles.overlay} />
       <sup className={styles.title}>

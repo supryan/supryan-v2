@@ -8,7 +8,7 @@ const Video = ({ src, poster, controls = true, className, ...props }) => {
   const videoRef = useRef()
   const [muted, setMuted] = useState(true)
   const [playing, setPlaying] = useState(true)
-  const [inViewRef, inView] = useInView()
+  const [inViewRef, inView] = useInView({ threshold: 0, rootMargin: '0px 0px' })
 
   const handleVideoClick = () => {
     if (videoRef?.current && controls) {
@@ -42,7 +42,7 @@ const Video = ({ src, poster, controls = true, className, ...props }) => {
     <sup
       ref={inViewRef}
       role="button"
-      aria-label="Play video from the beginning"
+      aria-label={`${!playing ? 'Play' : 'Pause'} video`}
       onClick={handleVideoClick}
       className={classNames(styles.video, className, {
         [styles.muted]: muted,

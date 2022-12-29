@@ -95,6 +95,7 @@ const ButtonIcon = ({
   }, [visible, type])
 
   const handleClick = (e) => {
+    e.stopPropagation()
     e.preventDefault()
 
     if (tooltip && tooltip !== '') {

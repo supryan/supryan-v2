@@ -11,9 +11,9 @@ const Button = ({ className, link, children }) => {
       <sup>{children}</sup>
     </PrismicLink>
   ) : (
-    <div className={classNames(className, styles.button)}>
+    <sup className={classNames(className, styles.button)}>
       <sup>{children}</sup>
-    </div>
+    </sup>
   )
 }
 Button.propTypes = {

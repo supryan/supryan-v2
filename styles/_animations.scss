@@ -1,0 +1,123 @@
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  50.01% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fold {
+  0%,
+  10% {
+    opacity: 0;
+    transform: perspective(140px) rotateX(-180deg);
+  }
+
+  25%,
+  75% {
+    opacity: 1;
+    transform: perspective(140px) rotateX(0deg);
+  }
+
+  90%,
+  100% {
+    opacity: 1;
+    transform: perspective(140px) rotateX(0deg);
+  }
+}
+
+@keyframes background-move {
+  from {
+    background-position: top left;
+  }
+
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes background-clip {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  50% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  75% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@mixin animate(
+  $animation: wave,
+  $duration: 1s,
+  $delay: 0s,
+  $ease: linear,
+  $iteration: infinite,
+  $timing: forwards,
+  $offset: null
+) {
+  animation: $animation $duration $delay $ease $timing $iteration;
+
+  @if $animation == dotted-move {
+    @keyframes dotted-move {
+      from {
+        stroke-dashoffset: $offset;
+      }
+
+      to {
+        stroke-dashoffset: $offset * 2;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import '../styles/global.scss'
 import PropTypes from 'prop-types'
 import { AnimatePresence } from 'framer-motion'
 import * as analytics from 'lib/analytics'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import ScrollSpyContextProvider from 'lib/contexts/scroll-spy-context'
 
 function MyApp({ Component, pageProps, router }) {
@@ -26,6 +26,15 @@ function MyApp({ Component, pageProps, router }) {
       router.events.off('routeChangeError', handleRouteChangeError)
     }
   }, [router])
+
+  const addLogger = useCallback(() => {
+    console.log(` ________   ___  ___   ________   \r\n|\\   ____\\ |\\  \\|\\  \\ |\\   __  \\  \r\n\\ \\  \\___|_\\ \\  \\\\\\  \\\\ \\  \\|\\  \\ \r\n \\ \\_____  \\\\ \\  \\\\\\  \\\\ \\   ____\\\r\n  \\|____|\\  \\\\ \\  \\\\\\  \\\\ \\  \\___|\r\n    ____\\_\\  \\\\ \\_______\\\\ \\__\\   \r\n   |\\_________\\\\|_______| \\|__|   \r\n   \\|_________|
+    `)
+  }, [])
+
+  useEffect(() => {
+    addLogger()
+  }, [addLogger])
 
   return (
     // to remove page transitions, remove AnimatePresence wrapper and motion.div in Layout component
