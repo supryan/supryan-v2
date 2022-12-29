@@ -9,12 +9,18 @@ import Intro from '../Intro'
 import styles from './index.module.scss'
 import config from 'constants/config'
 import Deuces from 'public/images/deuces.svg'
+import classNames from 'classnames'
+import { useInView } from 'react-intersection-observer'
+import SkipToMain from '../SkipToMain'
 
 const Layout = ({ metadata, globals, header, preview, children }) => {
+  const [ref, inView] = useInView()
+
   return (
     <>
       <Meta metadata={metadata} defaults={null} />
       {preview && <PreviewBar />}
+      <SkipToMain />
       <motion.sup
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -33,7 +39,11 @@ const Layout = ({ metadata, globals, header, preview, children }) => {
             className={styles.inner}>
             {children}
           </motion.sup>
-          <Deuces className={styles.deuces} />
+          <sup
+            ref={ref}
+            className={classNames(styles.deuces, { [styles.active]: inView })}>
+            <Deuces />
+          </sup>
         </main>
       </motion.sup>
       <Footer footer={globals} />

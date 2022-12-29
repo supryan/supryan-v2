@@ -1,10 +1,15 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 @use 'typography' as t;
+@use 'animations' as a;
 
 .video {
   cursor: url('/images/icon-pause.png'), auto;
-  position: unset;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 
   &.muted {
     cursor: url('/images/icon-rewind.png'), auto;
@@ -15,16 +20,40 @@
   }
 
   &.noControls {
-    cursor: auto;
+    cursor: unset;
   }
 
   video {
+    display: block;
     height: 100%;
-    left: 0;
     object-fit: cover;
     object-position: center center;
     position: absolute;
     top: 0;
     width: 100%;
+  }
+}
+
+.progress {
+  appearance: none;
+  border: 0;
+  bottom: 0;
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background: url('/images/line-horizontal-still.svg') repeat-x;
+    background-size: 100% 1px;
+    transition: width 0.2s linear;
+  }
+
+  &::-moz-progress-bar {
+    background: v.$black;
   }
 }

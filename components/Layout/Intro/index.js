@@ -15,6 +15,7 @@ import DocumentIcon from 'public/images/icon-document.svg'
 import ArrowIcon from 'public/images/icon-arrow.svg'
 import classNames from 'classnames'
 import config from 'constants/config'
+import Line from 'public/images/line-horizontal.svg'
 
 const Intro = ({ title, description, links }) => {
   const [scrollLock, setScrollLock] = useState(true)
@@ -43,13 +44,15 @@ const Intro = ({ title, description, links }) => {
             }}
             className={classNames(styles.background, {
               [styles.hide]: index === 1 && hideLayer,
+              [styles.dotted]: index === 0,
             })}
             onAnimationComplete={() => {
               if (index === 1) {
                 setHideLayer(true)
               }
-            }}
-          />
+            }}>
+            {index === 0 && <Line className={styles.line} />}
+          </motion.sup>
         ))}
         <motion.sup
           initial={{ visibility: 'hidden' }}

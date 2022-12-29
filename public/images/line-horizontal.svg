@@ -1,11 +1,11 @@
-<svg width="1px" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<svg width="100%" height="1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
   <defs>
     <pattern
-      id="line-pattern"
+      id="line-pattern-horizontal"
       x="0"
       y="0"
-      width="1"
-      height="24"
+      width="24"
+      height="1"
       patternUnits="userSpaceOnUse"
       patternTransform="translate(0 0)">
       <animateTransform
@@ -13,7 +13,7 @@
         attributeName="patternTransform"
         type="translate"
         from="0 0"
-        to="0 24"
+        to="24 0"
         begin="0"
         dur="1s"
         repeatCount="indefinite"
@@ -21,8 +21,8 @@
       <line
         x1="0"
         y1="0"
-        x2="0"
-        y2="100%"
+        x2="100%"
+        y2="0"
         stroke="currentColor"
         stroke-width="2"
         stroke-dasharray="12, 10"
@@ -33,8 +33,8 @@
     x="0"
     y="0"
     width="100%"
-    height="100%"
+    height="1"
     stroke="none"
-    fill="url(#line-pattern)"
+    fill="url(#line-pattern-horizontal)"
   />
 </svg>

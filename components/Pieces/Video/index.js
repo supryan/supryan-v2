@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types'
 import styles from './index.module.scss'
 import classNames from 'classnames'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-const Video = ({ src, poster, controls = true, className, ...props }) => {
+const Video = ({
+  src,
+  poster,
+  controls = true,
+  progress = false,
+  className,
+  ...props
+}) => {
+  const progressRef = useRef()
   const videoRef = useRef()
   const [muted, setMuted] = useState(true)
   const [playing, setPlaying] = useState(true)
-  const [inViewRef, inView] = useInView({ threshold: 0, rootMargin: '0px 0px' })
+  const [inViewRef, inView] = useInView()
 
   const handleVideoClick = () => {
     if (videoRef?.current && controls) {
@@ -26,6 +34,21 @@ const Video = ({ src, poster, controls = true, className, ...props }) => {
       }
     }
   }
+
+  const handleProgress = useCallback(() => {
+    if (videoRef?.current) {
+      const video = videoRef.current
+      const progress = progressRef?.current
+
+      const currentTime = video.currentTime
+      const duration = video.duration
+      const percentage = currentTime / duration
+
+      if (progress) {
+        progress.value = percentage
+      }
+    }
+  }, [])
 
   // Intersection observer controls
   useEffect(() => {
@@ -57,8 +80,18 @@ const Video = ({ src, poster, controls = true, className, ...props }) => {
         loop
         preload="auto"
         src={src}
+        onTimeUpdate={handleProgress}
         {...props}
       />
+      {progress && !muted && (
+        <progress
+          className={styles.progress}
+          ref={progressRef}
+          min={0}
+          max={1}
+          value={0}
+        />
+      )}
     </sup>
   )
 }

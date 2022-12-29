@@ -35,6 +35,13 @@
   }
 }
 
+.line {
+  bottom: -15px;
+  color: rgba(v.$black, 0.2);
+  position: absolute;
+  width: 100%;
+}
+
 .container {
   @include m.container;
 

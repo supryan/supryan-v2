@@ -58,6 +58,12 @@ const Item = ({
     [element]
   )
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      scrollToItem()
+    }
+  }
+
   // useEffect(() => {
   //   if (inView) {
   //     setTimeout(() => {
@@ -72,6 +78,7 @@ const Item = ({
       aria-label={`Click to expand project: ${RichText.asText(title)}`}
       ref={ref}
       className={classNames(styles.item, { [styles.active]: inView })}
+      onKeyDown={handleKeyDown}
       tabIndex={inView ? -1 : 0}
       onClick={(e) => scrollToItem(e?.target)}
       {...props}>
@@ -90,6 +97,7 @@ const Item = ({
             aria-label="Click to go to external project"
             href={link?.url}
             target={link?.target}
+            tabIndex={inView ? 0 : -1}
             className={styles.media}
             rel="noreferrer">
             <sup className={styles.buttons}>

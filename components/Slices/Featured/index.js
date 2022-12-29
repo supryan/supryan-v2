@@ -29,7 +29,7 @@ const Featured = ({ video, cta }) => {
               </PrismicLink>
             </sup>
           </sup>
-          <Video src={video?.url} />
+          <Video progress src={video?.url} />
         </motion.sup>
       </sup>
     </sup>

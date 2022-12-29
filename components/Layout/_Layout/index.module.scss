@@ -50,12 +50,27 @@
   bottom: -75px;
   left: 0;
   margin: 0 auto;
-  overflow: visible;
   position: absolute;
   right: 0;
-  transform: rotate(5deg);
+  transform: rotate(30deg) translateZ(0);
+  transform-origin: 30% 100%;
+  transition: transform 1.5s cubic-bezier(0.22, 0.065, 0, 1.42);
   width: 12vw;
   z-index: 1;
+
+  @include m.breakpoint(v.$md) {
+    transform: rotate(50deg) translateZ(0);
+  }
+
+  &.active {
+    transform: rotate(5deg) translateZ(0);
+  }
+
+  svg {
+    margin: 0 auto;
+    overflow: visible;
+    width: inherit;
+  }
 
   path {
     @include a.animate($animation: dotted-move, $offset: 11);

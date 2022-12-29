@@ -30,7 +30,7 @@ const Projects = ({ items }) => {
   }, [getScrollPercentage])
 
   return (
-    <sup ref={ref} className={styles.projectList}>
+    <sup id="projects" ref={ref} className={styles.projectList}>
       <sup
         role="button"
         aria-label="Scroll back top top"
