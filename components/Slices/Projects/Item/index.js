@@ -4,7 +4,7 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import Grid from 'components/Layout/Grid'
 import { RichText } from 'prismic-reactjs'
 import Image from 'next/image'
@@ -78,8 +78,8 @@ const Item = ({
       aria-label={`Click to expand project: ${RichText.asText(title)}`}
       ref={ref}
       className={classNames(styles.item, { [styles.active]: inView })}
-      onKeyDown={handleKeyDown}
       tabIndex={inView ? -1 : 0}
+      onKeyDown={handleKeyDown}
       onClick={(e) => scrollToItem(e?.target)}
       {...props}>
       <sup className={styles.overlay} />

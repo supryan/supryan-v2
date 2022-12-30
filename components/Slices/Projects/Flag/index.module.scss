@@ -21,6 +21,7 @@ $bg-contrast: darken(v.$sunny, 45%);
   position: sticky;
   top: 50vh;
   transform: translateY(5px) translateZ(0);
+  transition: transform 0.1s ease;
   will-change: transform;
   z-index: v.$z-2;
 
