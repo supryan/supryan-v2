@@ -2,6 +2,8 @@
 @use 'mixins' as m;
 @use 'variables' as v;
 
+$progress-bar-gap: 20px;
+
 .featured {
   margin-bottom: v.$slice-pad-md;
 }
@@ -13,10 +15,22 @@
 .wrapper {
   clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
   height: 0;
-  padding-bottom: 56.65%;
+  padding-bottom: calc(56.65% + $progress-bar-gap);
   position: relative;
   transform: skewY(-5deg) translateZ(0);
   width: 100%;
+
+  &::after {
+    background-color: v.$white;
+    bottom: 0;
+    content: '';
+    height: $progress-bar-gap;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+  }
 
   video {
     background-color: #ccc;
@@ -25,6 +39,10 @@
     transform: skewY(5deg) scale(1.2);
     width: 100%;
     z-index: 1;
+  }
+
+  progress {
+    z-index: 3;
   }
 }
 

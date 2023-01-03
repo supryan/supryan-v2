@@ -161,6 +161,7 @@ const Item = ({
                   src={image?.url}
                   alt={image?.alt}
                   layout="fill"
+                  objectFit="cover"
                   className={styles.image}
                 />
               )
