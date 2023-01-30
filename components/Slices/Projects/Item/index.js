@@ -4,15 +4,15 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import Grid from 'components/Layout/Grid'
 import { RichText } from 'prismic-reactjs'
-import Image from 'next/image'
 import ButtonIcon from 'components/Pieces/ButtonIcon'
 import { capitalize } from 'lodash'
 import Video from 'components/Pieces/Video'
 import prismicVideoShape from 'shapes/prismic/video'
 import prismicImageShape from 'shapes/prismic/image'
+import ImageComponent from 'components/Pieces/ImageComponent'
 
 const Item = ({
   title,
@@ -28,6 +28,7 @@ const Item = ({
 }) => {
   const { ref, inView, element } = useScrollSpy({ date })
   const detailsRef = useRef(null)
+  console.log(image)
 
   // Project contains in progress category
   const isInProgress =
@@ -157,12 +158,14 @@ const Item = ({
               />
             ) : (
               image?.url && (
-                <Image
+                <ImageComponent
                   src={image?.url}
                   alt={image?.alt}
                   layout="fill"
                   objectFit="cover"
+                  objectPosition="center center"
                   className={styles.image}
+                  unoptimized
                 />
               )
             )}
