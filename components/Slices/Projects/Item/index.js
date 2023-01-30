@@ -28,7 +28,6 @@ const Item = ({
 }) => {
   const { ref, inView, element } = useScrollSpy({ date })
   const detailsRef = useRef(null)
-  console.log(image)
 
   // Project contains in progress category
   const isInProgress =
