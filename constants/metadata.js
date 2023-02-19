@@ -4,7 +4,7 @@ const metaDefaults = {
   TITLE: `Sup. I'm Ryan Gordon.`,
   DESCRIPTION: 'Creative Technologist. I make things for the Internet. ✌️',
   DIVIDER: '|',
-  IMAGE: '/images/share.png',
+  IMAGE: '/images/share.jpg',
 }
 
 export default metaDefaults

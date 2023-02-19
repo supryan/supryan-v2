@@ -8,6 +8,7 @@ import ArrowIcon from 'public/images/icon-arrow.svg'
 import prismicLinkShape from 'shapes/prismic/link'
 
 const Featured = ({ video, cta }) => {
+  console.log(cta)
   return (
     <sup className={styles.featured}>
       <sup className={styles.container}>
@@ -23,11 +24,13 @@ const Featured = ({ video, cta }) => {
           className={styles.wrapper}>
           <sup className={styles.header}>
             <sup>The Latest</sup>
-            <sup>
-              <PrismicLink className={styles.cta} link={cta}>
-                Mo&apos; Video <ArrowIcon />
-              </PrismicLink>
-            </sup>
+            {cta?.url && (
+              <sup>
+                <PrismicLink className={styles.cta} link={cta}>
+                  Mo&apos; Video <ArrowIcon />
+                </PrismicLink>
+              </sup>
+            )}
           </sup>
           <Video progress src={video?.url} />
         </motion.sup>
