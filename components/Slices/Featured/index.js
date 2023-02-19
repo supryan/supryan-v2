@@ -8,7 +8,6 @@ import ArrowIcon from 'public/images/icon-arrow.svg'
 import prismicLinkShape from 'shapes/prismic/link'
 
 const Featured = ({ video, cta }) => {
-  console.log(cta)
   return (
     <sup className={styles.featured}>
       <sup className={styles.container}>
