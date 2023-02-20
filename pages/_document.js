@@ -30,7 +30,14 @@ export default class MyDocument extends Document {
             </>
           )}
         </Head>
-        <body>
+        <body
+          data-scroll-lock-saved-overflow-y-property="auto"
+          data-scroll-lock-saved-inline-overflow-property=""
+          data-scroll-lock-saved-inline-overflow-y-property=""
+          data-scroll-lock-locked="true"
+          data-scroll-lock-filled-gap="true"
+          data-scroll-lock-current-fill-gap-method="padding"
+          style={{ overflow: 'hidden', paddingRight: 0 }}>
           <Main />
           <NextScript />
         </body>

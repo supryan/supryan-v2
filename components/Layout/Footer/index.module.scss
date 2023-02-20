@@ -5,6 +5,7 @@
 .footer {
   background-color: v.$white;
   bottom: 0;
+  opacity: 1;
   position: sticky;
 
   :global([data-scroll-lock-locked]) & {
