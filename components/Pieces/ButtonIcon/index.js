@@ -43,9 +43,9 @@ const ButtonIcon = ({
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeDasharray={512}
-            strokeDashoffset={-512}
-            initial={{ strokeDashoffset: -512 }}
-            animate={{ strokeDashoffset: visible ? 0 : -512 }}
+            strokeDashoffset={512}
+            initial={{ strokeDashoffset: 512 }}
+            animate={{ strokeDashoffset: visible ? 1024 : 0 }}
             transition={{
               duration: 0.3,
               delay: 2,
@@ -78,7 +78,7 @@ const ButtonIcon = ({
                   strokeDasharray={512}
                   strokeDashoffset={512}
                   initial={{ strokeDashoffset: 512 }}
-                  animate={{ strokeDashoffset: visible ? 0 : 512 }}
+                  animate={{ strokeDashoffset: visible ? 1024 : 0 }}
                   transition={{
                     duration: 0.3,
                     delay: 2 + i * 0.25,

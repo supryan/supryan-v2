@@ -110,7 +110,7 @@
 }
 
 .cross {
-  visibility: hidden;
+  opacity: 0;
 
   .active & {
     @include a.animate($animation: blink, $delay: 2s, $iteration: 1);
