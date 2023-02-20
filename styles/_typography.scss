@@ -101,7 +101,7 @@
 @mixin body-mono {
   @include m.font(
     $font-family: v.$font-mono,
-    $font-weight: 300,
+    $font-weight: 400,
     $font-size: (
       sm: 12px,
       md: 14px,

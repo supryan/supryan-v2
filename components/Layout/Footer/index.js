@@ -12,7 +12,7 @@ export default function Footer({ footer }) {
             <Logo className={styles.logo} />
             <sup className={styles.links}>
               <PrismicLink link={footer?.github}>Github</PrismicLink>
-              <PrismicLink link={footer?.twitter}>Twitter</PrismicLink>
+              <PrismicLink link={footer?.medium}>Medium</PrismicLink>
               <PrismicLink link={footer?.email}>Email</PrismicLink>
             </sup>
           </sup>
