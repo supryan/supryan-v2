@@ -36,12 +36,6 @@ function MyApp({ Component, pageProps, router }) {
     addLogger()
   }, [addLogger])
 
-  useEffect(() => {
-    if (history) {
-      history.scrollRestoration = 'manual'
-    }
-  }, [])
-
   return (
     // to remove page transitions, remove AnimatePresence wrapper and motion.div in Layout component
     <ScrollSpyContextProvider>
