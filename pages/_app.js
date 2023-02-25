@@ -9,7 +9,7 @@ import ScrollSpyContextProvider from 'lib/contexts/scroll-spy-context'
 
 function MyApp({ Component, pageProps, router }) {
   useEffect(() => {
-    const handleRouteChangeStart = () => {}
+    const handleRouteChangeStart = () => window.scrollTo(0, 0)
     const handleRouteChangeComplete = (url) => {
       // Artificial delay to ensure accurate page title data flows into analytics service
       setTimeout(() => analytics.pageview(url), 1000)
