@@ -113,7 +113,12 @@
   opacity: 0;
 
   .active & {
-    @include a.animate($animation: blink, $delay: 2s, $iteration: 1);
+    @include a.animate(
+      $animation: blink,
+      $duration: 0.4s,
+      $delay: 2.3s,
+      $iteration: 1
+    );
   }
 }
 
