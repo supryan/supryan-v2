@@ -11,9 +11,9 @@ export default function Footer({ footer }) {
           <sup className={styles.brand}>
             <Logo className={styles.logo} />
             <sup className={styles.links}>
-              <PrismicLink link={footer?.github}>Github</PrismicLink>
-              <PrismicLink link={footer?.medium}>Medium</PrismicLink>
               <PrismicLink link={footer?.email}>Email</PrismicLink>
+              <PrismicLink link={footer?.github}>Github</PrismicLink>
+              <PrismicLink link={footer?.medium}>Musings</PrismicLink>
             </sup>
           </sup>
         </Grid>
