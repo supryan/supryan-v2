@@ -13,6 +13,7 @@ const ButtonIcon = ({
   className,
   tooltip,
   onClick,
+  onTooltip,
   ...props
 }) => {
   const ref = useRef()
@@ -21,6 +22,7 @@ const ButtonIcon = ({
 
   useClickOutside(ref, () => {
     setShowTooltip(false)
+    onTooltip(false)
   })
 
   useEffect(() => {
@@ -100,6 +102,7 @@ const ButtonIcon = ({
 
     if (tooltip && tooltip !== '') {
       setShowTooltip(!showTooltip)
+      onTooltip(!showTooltip)
     }
 
     if (onClick) {
@@ -157,4 +160,5 @@ ButtonIcon.propTypes = {
   delay: PropTypes.number,
   rotation: PropTypes.number,
   tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  onTooltip: PropTypes.func,
 }

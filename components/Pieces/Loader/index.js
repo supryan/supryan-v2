@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import styles from './index.module.scss'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
-import ShadowText from '../ShadowText'
 import Logo from '../Logo'
 
 const Loader = ({ loading, timeout = 0, overlay = true }) => {

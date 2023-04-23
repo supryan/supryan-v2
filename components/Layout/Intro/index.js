@@ -13,6 +13,7 @@ import prismicRichTextShape from 'shapes/prismic/richtext'
 import CameraIcon from 'public/images/icon-camera.svg'
 import DocumentIcon from 'public/images/icon-document.svg'
 import ArrowIcon from 'public/images/icon-arrow.svg'
+import EmailIcon from 'public/images/icon-email.svg'
 import classNames from 'classnames'
 import config from 'constants/config'
 import Line from 'public/images/line-horizontal.svg'
@@ -85,6 +86,8 @@ const Intro = ({ title, description, links }) => {
                     <sup key={i} className={styles.linkWrapper}>
                       {link_text === 'Video Reel' ? (
                         <CameraIcon />
+                      ) : link_text === 'Email' ? (
+                        <EmailIcon />
                       ) : (
                         <DocumentIcon />
                       )}

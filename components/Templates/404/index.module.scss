@@ -1,0 +1,30 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'typography' as t;
+
+.fourOhFour {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: v.$z-1;
+}
+
+.errorContainer {
+  padding: 0 50px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.errorText {
+  @include t.body-lg;
+
+  margin: 25px auto;
+  transform: skewY(-5deg);
+  transform-origin: top left;
+}

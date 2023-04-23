@@ -4,7 +4,7 @@ import RichTextComponent from 'components/Slices/RichText'
 import { useScrollSpy } from 'lib/hooks'
 import prismicRichTextShape from 'shapes/prismic/richtext'
 import classNames from 'classnames'
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import Grid from 'components/Layout/Grid'
 import { RichText } from 'prismic-reactjs'
 import ButtonIcon from 'components/Pieces/ButtonIcon'
@@ -28,6 +28,7 @@ const Item = ({
 }) => {
   const { ref, inView, element } = useScrollSpy({ date })
   const detailsRef = useRef(null)
+  const [tooltipShown, setTooltipShown] = useState(false)
 
   // Project contains in progress category
   const isInProgress =
@@ -77,7 +78,9 @@ const Item = ({
       role="button"
       aria-label={`Click to expand project: ${RichText.asText(title)}`}
       ref={ref}
-      className={classNames(styles.item, { [styles.active]: inView })}
+      className={classNames(styles.item, {
+        [styles.active]: inView && !tooltipShown,
+      })}
       tabIndex={inView ? -1 : 0}
       onKeyDown={handleKeyDown}
       onClick={(e) => scrollToItem(e?.target)}
@@ -111,6 +114,7 @@ const Item = ({
                   </sup>
                 }
                 type={isInProgress ? 'cross' : 'checkmark'}
+                onTooltip={(tooltip) => setTooltipShown(tooltip)}
               />
               <ButtonIcon
                 className={styles.buttonIcon}
@@ -147,6 +151,7 @@ const Item = ({
                 }
                 rotation={180}
                 // delay={500}
+                onTooltip={(tooltip) => setTooltipShown(tooltip)}
               />
             </sup>
             {video?.url && inView ? (

@@ -14,6 +14,7 @@ const ShadowText = ({
   startColor,
   endColor,
   reverse = false,
+  delay = 0,
   ...props
 }) => {
   const text = [...children]
@@ -36,13 +37,13 @@ const ShadowText = ({
       className={classNames(styles.text, className)}>
       {text?.map((character, index) => (
         <motion.sup
-          key={`shadow-character-${index}`}
+          key={`${character}-${index}`}
           initial="hidden"
           animate={controls}
           variants={shadowText({ startColor, endColor })}
           transition={{
             duration: text?.length * 0.25,
-            delay: index * 0.2,
+            delay: index * 0.2 + delay,
             repeat: loop ? Infinity : false,
             repeatType: loop ? 'reverse' : undefined,
             ease: 'backOut',
@@ -58,4 +59,8 @@ const ShadowText = ({
 
 export default ShadowText
 
-ShadowText.propTypes = { children: PropTypes.string, className: PropTypes.any }
+ShadowText.propTypes = {
+  children: PropTypes.string,
+  className: PropTypes.any,
+  delay: PropTypes.number,
+}

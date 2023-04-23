@@ -52,12 +52,16 @@ const Video = ({
 
   // Intersection observer controls
   useEffect(() => {
-    if (videoRef?.current) {
-      if (!inView) {
-        videoRef.current.pause()
-      } else if (playing) {
-        videoRef.current.play()
+    try {
+      if (videoRef?.current) {
+        if (!inView) {
+          videoRef.current.pause()
+        } else if (playing) {
+          videoRef.current.play()
+        }
       }
+    } catch (err) {
+      console.log(err)
     }
   }, [inView, playing])
 
